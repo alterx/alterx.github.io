@@ -22,7 +22,7 @@ force-https: True
 
 author: "Carlos Vega"
 lang: "en"
-title: "<b> Carlos Vega </b>"
+title: "Carlos <strong> Vega </strong>"
 favicon: "/img/favicon.ico"
 description: "Personal page."
 keywords: "hi"
