@@ -31,7 +31,7 @@ keywords: "carlos, vega"
 # Intro layout #
 ################
 
-black-favicon: "/img/black-lab-glass.ico"
+# black-favicon: "/img/black-lab-glass.ico"
 background-img: "../img/intro-bg.jpg"
 me-img: "/img/jetpacktocat.png"
 
