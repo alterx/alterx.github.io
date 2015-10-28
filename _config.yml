@@ -72,7 +72,7 @@ events:
   - image: "/img/career/una.png"
     date: "2008 - 2011"
     description: "Computer Engineering, Universidad Nacional"
-  - image: "/img/career/default.jpg"
+  - image: "/img/career/default.png"
     date: "2010 - "
     description: "Freelancing"
   - image: "/img/career/samtec.jpg"
@@ -81,7 +81,7 @@ events:
   - image: "/img/career/accenture.jpg"
     date: "2012 - feb 2014"
     description: "Senior Analyst @ Avventa Worldwide/ Accenture"
-  - image: "/img/career/konrad.jpg"
+  - image: "/img/career/konrad.png"
     date: "feb 2014 - "
     description: "Senior Software Developer @ Konrad Group"
 
