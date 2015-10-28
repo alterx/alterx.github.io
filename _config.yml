@@ -24,7 +24,7 @@ author: "Carlos Vega"
 lang: "en"
 title: "Carlos <strong> Vega </strong>"
 favicon: "/img/favicon.ico"
-description: "Personal page."
+description: "5+ years of Software Engineering experience. From requirement analysis and project scheduling to architectural design and development he will lead a team through every phase in the software development cycle and deliver quality products that meet and exceed expectations. He's worked with world renowned companies such as Accenture -delivering solutions to SAY Media, Dupont-, Specialized, Samtec Interconnect and Konrad Group."
 keywords: "hi"
 
 ################
@@ -70,11 +70,20 @@ reddit-share: True
 
 events:
   - image: "/img/career/spidertocat.png"
-    date: "September 2013 - Today"
-    description: "Saving the neighborhood!"
+    date: "2008 - 2011"
+    description: "Computer Engineering, Universidad Nacional"
   - image: "/img/career/baracktocat.jpg"
-    date: "September 2007 - August 2013"
-    description: "Started coding"
+    date: "2010 - "
+    description: "Freelancing"
+  - image: "/img/career/baracktocat.jpg"
+    date: "aug 2011 - dec 2011"
+    description: "Web Developer (Intern) @ Samtec Interconnect"
+  - image: "/img/career/baracktocat.jpg"
+    date: "2012 - feb 2014"
+    description: "Senior Analyst @ Avventa Worldwide/ Accenture"
+  - image: "/img/career/baracktocat.jpg"
+    date: "feb 2014 - "
+    description: "Senior Software Developer @ Konrad Group"
 
 # First image of the Career timeline
 career-img: "/img/career/default.png"
