@@ -69,19 +69,19 @@ lines:			# You can add HTML Tags in the Text
 ###############
 
 events:
-  - image: "/img/career/spidertocat.png"
+  - image: "/img/career/una.png"
     date: "2008 - 2011"
     description: "Computer Engineering, Universidad Nacional"
-  - image: "/img/career/baracktocat.jpg"
+  - image: "/img/career/default.jpg"
     date: "2010 - "
     description: "Freelancing"
-  - image: "/img/career/baracktocat.jpg"
+  - image: "/img/career/samtec.jpg"
     date: "aug 2011 - dec 2011"
     description: "Web Developer (Intern) @ Samtec Interconnect"
-  - image: "/img/career/baracktocat.jpg"
+  - image: "/img/career/accenture.jpg"
     date: "2012 - feb 2014"
     description: "Senior Analyst @ Avventa Worldwide/ Accenture"
-  - image: "/img/career/baracktocat.jpg"
+  - image: "/img/career/konrad.jpg"
     date: "feb 2014 - "
     description: "Senior Software Developer @ Konrad Group"
 
