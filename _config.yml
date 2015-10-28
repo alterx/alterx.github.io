@@ -31,7 +31,7 @@ keywords: "hi"
 # Intro layout #
 ################
 
-#black-favicon: "/img/black-lab-glass.ico"
+black-favicon: "/img/black-lab-glass.ico"
 background-img: "../img/intro-bg.jpg"
 me-img: "/img/jetpacktocat.png"
 
@@ -55,13 +55,13 @@ lines:			# You can add HTML Tags in the Text
 # Blog #
 ########
 
-post-preview-words: 96
+#post-preview-words: 96
 
-paginate: 5
+#paginate: 5
 
-fb-share: True
-twitter-share: True
-reddit-share: True
+#fb-share: True
+#twitter-share: True
+#reddit-share: True
 # disqus-shortname: ""
 
 ###############
