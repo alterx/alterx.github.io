@@ -83,21 +83,19 @@ career-img: "/img/career/default.png"
 # Contact layout #
 ##################
 
-email: "your@email.here"
+email: "clmvega@gmail.com"
 
 ##################
 # Social Buttons #
 ##################
 
 social:
-  - title: "facebook"
-    url: "https://facebook.com/"
+  - title: "medium"
+    url: "https://medium.com/@_carlosvega"
   - title: "twitter"
-    url: "https://twitter.com/"
-  - title: "youtube"
-    url: "https://youtube.com/"
+    url: "https://twitter.com/__el_Negro"
   - title: "github"
-    url: "https://github.com/PanosSakkos/personal-jekyll-theme"
+    url: "https://github.com/alterx"
   - title: "rss"
     url: "/feed.xml"
 
