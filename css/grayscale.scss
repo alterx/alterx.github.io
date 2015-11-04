@@ -111,7 +111,7 @@ ol {
         li {
             &.active {
             outline: nonte;
-            background-color: rgba($light, 0.3);
+            background-color: rgba($secondary, 0.22);
         }
             a {
                 -webkit-transition: background .3s ease-in-out;
@@ -145,7 +145,7 @@ ol {
     }
 
     .navbar-custom.top-nav-collapse {
-        border-bottom: 1px solid rgba($light, 0.3);
+        border-bottom: 1px solid rgba($secondary, 0.22);
     }
 }
 
