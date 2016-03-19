@@ -82,8 +82,11 @@ events:
     date: "2012 - feb 2014"
     description: "Senior Analyst @ Avventa Worldwide/ Accenture"
   - image: "/img/career/konrad.png"
-    date: "feb 2014 - "
+    date: "feb 2014 - jan 2016"
     description: "Senior Software Developer @ Konrad Group"
+  - image: "/img/career/encore.jpg"
+    date: "jan 2016 - "
+    description: "Senior Software Developer @ Informatech for Encore Capital Group"
 
 # First image of the Career timeline
 career-img: "/img/career/default.png"
