@@ -85,8 +85,11 @@ events:
     date: "feb 2014 - jan 2016"
     description: "Senior Software Developer @ Konrad Group"
   - image: "/img/career/encore.jpg"
-    date: "jan 2016 - "
+    date: "jan 2016 - oct 2016"
     description: "Senior Software Developer @ Informatech for Encore Capital Group"
+  - image: "/img/career/18techs.jpg"
+    date: "oct 2016 - "
+    description: "Software Developer @ 18Techs | QUAD Advertising"
 
 # First image of the Career timeline
 career-img: "/img/career/default.png"
