@@ -40,6 +40,7 @@
     width: 100%;
     padding: 0 20px 0 100px;
     text-align: left;
+    margin: 0 -20px;
 }
 
 .timeline>li .timeline-panel:before {
@@ -131,6 +132,7 @@
 .timeline .timeline-body>p,
 .timeline .timeline-body>ul {
     margin-bottom: 0;
+    color: $primary;
 }
 
 @media(min-width:768px) {
