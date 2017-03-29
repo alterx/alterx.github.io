@@ -71,7 +71,7 @@ lines:			# You can add HTML Tags in the Text
 events:
   - image: "/img/career/una.png"
     date: "2008 - 2011"
-    description: "Computer Engineering, Universidad Nacional"
+    description: "Computer Engineering @ Universidad Nacional"
   - image: "/img/career/default.png"
     date: "2010 - "
     description: "Freelancing"
