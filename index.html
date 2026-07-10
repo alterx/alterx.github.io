@@ -330,6 +330,13 @@
       #ai ul.job::before {
         content: none;
       }
+      /* The AI-loop list isn't a timeline entry — no left rule/indent even in
+         print (where .job gets a border), just plain bullets like everywhere. */
+      #ai ul.job {
+        border: none !important;
+        padding-left: 0 !important;
+        margin: 0 !important;
+      }
       .job-top {
         display: flex;
         flex-wrap: wrap;
@@ -1451,50 +1458,20 @@
               class="job"
               style="border: none; padding-left: 0; margin: 0; list-style: none"
             >
-              <li style="padding-left: 22px; position: relative; margin: 7px 0">
-                <span
-                  style="
-                    position: absolute;
-                    left: 0;
-                    color: var(--green);
-                    font-family: var(--mono);
-                    font-weight: 700;
-                  "
-                  >&gt;</span
-                >
+              <li>
                 <span data-i18n="ai.b1"
                   >Pair with <strong>Claude</strong> and
                   <strong>Codex</strong> for architecture, refactors, and code
                   review.</span
                 >
               </li>
-              <li style="padding-left: 22px; position: relative; margin: 7px 0">
-                <span
-                  style="
-                    position: absolute;
-                    left: 0;
-                    color: var(--green);
-                    font-family: var(--mono);
-                    font-weight: 700;
-                  "
-                  >&gt;</span
-                >
+              <li>
                 <span data-i18n="ai.b2"
                   >Use <strong>Cursor</strong> as a primary editor for
                   AI-assisted, in-context development.</span
                 >
               </li>
-              <li style="padding-left: 22px; position: relative; margin: 7px 0">
-                <span
-                  style="
-                    position: absolute;
-                    left: 0;
-                    color: var(--green);
-                    font-family: var(--mono);
-                    font-weight: 700;
-                  "
-                  >&gt;</span
-                >
+              <li>
                 <span data-i18n="ai.b3"
                   >Build repeatable AI workflows &mdash; scaffolding, test
                   generation, and docs &mdash; into the team's process.</span
