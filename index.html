@@ -13,24 +13,64 @@
 
 <style>
   :root {
-    --bg:        #0a0e0a;
-    --bg-panel:  #0e140e;
-    --bg-panel2: #111a11;
-    --grid:      rgba(0, 255, 102, 0.04);
-    --fg:        #c8f7d4;
-    --fg-dim:    #6f9a7b;
-    --fg-faint:  #45604d;
-    --green:     #00ff66;
-    --green-dim: #14b850;
-    --amber:     #ffb000;
-    --amber-dim: #b87a00;
-    --cyan:      #35e0e0;
-    --magenta:   #ff5cc8;
-    --line:      rgba(0, 255, 102, 0.15);
-    --line-soft: rgba(0, 255, 102, 0.08);
     --mono: 'Space Mono', 'Courier New', Courier, monospace;
     --sans: 'Source Sans 3', system-ui, sans-serif;
-    --shadow: 0 0 0 1px var(--line), 0 24px 60px -30px rgba(0,255,102,0.25);
+  }
+
+  /* ===== Sublime "Monokai" — classic dark ===== */
+  :root, :root[data-theme="dark"] {
+    --bg:        #272822;
+    --bg-panel:  #2c2d26;
+    --bg-panel2: #32332b;
+    --grid:      rgba(166,226,46,0.045);
+    --fg:        #f8f8f2;
+    --fg-dim:    #b3af9a;
+    --fg-faint:  #75715e;
+    --green:     #a6e22e;
+    --green-dim: #79a018;
+    --amber:     #fd971f;
+    --amber-dim: #b96f16;
+    --cyan:      #66d9ef;
+    --magenta:   #f92672;
+    --line:      rgba(166,226,46,0.16);
+    --line-soft: rgba(166,226,46,0.08);
+    --scan:      rgba(0,0,0,0.16);
+    --glow:      rgba(166,226,46,0.06);
+    --accent-glow: rgba(166,226,46,0.25);
+    --name-glow: rgba(166,226,46,0.25);
+    --sel-bg:    #a6e22e;
+    --sel-fg:    #1b1c17;
+    --heading:   #eafff0;
+    --shadow: 0 0 0 1px var(--line), 0 24px 60px -30px rgba(0,0,0,0.6);
+    color-scheme: dark;
+  }
+
+  /* ===== Sublime — classic light ===== */
+  :root[data-theme="light"] {
+    --bg:        #fbfbf3;
+    --bg-panel:  #ffffff;
+    --bg-panel2: #f4f4ea;
+    --grid:      rgba(0,0,0,0.035);
+    --fg:        #2b2a22;
+    --fg-dim:    #6c695a;
+    --fg-faint:  #a29e8c;
+    --green:     #5f9a00;
+    --green-dim: #4a7800;
+    --amber:     #c2740a;
+    --amber-dim: #955905;
+    --cyan:      #1b7f9e;
+    --magenta:   #d01b60;
+    --line:      rgba(0,0,0,0.12);
+    --line-soft: rgba(0,0,0,0.06);
+    --scan:      rgba(0,0,0,0.02);
+    --glow:      rgba(95,154,0,0.05);
+    --accent-glow: rgba(95,154,0,0.18);
+    --name-glow: rgba(95,154,0,0.10);
+    --sel-bg:    #ffe08a;
+    --sel-fg:    #2b2a22;
+    --heading:   #1b1a12;
+    --shadow: 0 1px 0 1px rgba(0,0,0,0.05), 0 24px 50px -30px rgba(0,0,0,0.28);
+    color-scheme: light;
   }
 
   * { box-sizing: border-box; }
@@ -69,10 +109,10 @@
         to bottom,
         rgba(0,0,0,0) 0px,
         rgba(0,0,0,0) 2px,
-        rgba(0,0,0,0.18) 3px,
+        var(--scan) 3px,
         rgba(0,0,0,0) 4px
       ),
-      radial-gradient(ellipse at 50% 0%, rgba(0,255,102,0.06), transparent 60%);
+      radial-gradient(ellipse at 50% 0%, var(--glow), transparent 60%);
     pointer-events: none;
     mix-blend-mode: multiply;
     z-index: 1;
@@ -130,9 +170,9 @@
     font-size: clamp(34px, 7vw, 58px);
     line-height: 1.05;
     margin: 8px 0 4px;
-    color: #eafff0;
+    color: var(--heading);
     letter-spacing: -0.5px;
-    text-shadow: 0 0 24px rgba(0,255,102,0.25);
+    text-shadow: 0 0 24px var(--name-glow);
   }
   .role {
     font-family: var(--mono);
@@ -165,7 +205,7 @@
     border: 1px solid var(--line);
     border-radius: 4px;
     padding: 6px 12px;
-    background: rgba(0,255,102,0.03);
+    background: var(--line-soft);
   }
   .contacts .k { color: var(--fg-faint); }
 
@@ -211,7 +251,7 @@
     box-shadow: 0 0 10px var(--green);
   }
   .job-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; align-items: baseline; }
-  .job-title { font-weight: 700; font-size: 19px; color: #eafff0; }
+  .job-title { font-weight: 700; font-size: 19px; color: var(--heading); }
   .job-co { color: var(--cyan); font-weight: 600; }
   .job-date {
     font-family: var(--mono); font-size: 12px; color: var(--amber);
@@ -247,7 +287,7 @@
     padding: 2px 7px; border-radius: 3px;
     color: #041007; background: var(--amber);
   }
-  .client h4 { margin: 0; font-size: 15px; color: #eafff0; font-weight: 700; }
+  .client h4 { margin: 0; font-size: 15px; color: var(--heading); font-weight: 700; }
   .client p { margin: 0; font-size: 13.5px; color: var(--fg-dim); line-height: 1.5; }
   .client .stackline { font-family: var(--mono); font-size: 11.5px; color: var(--green-dim); margin-top: 7px; }
   .client a { font-size: 12px; }
@@ -262,7 +302,7 @@
     display: flex; flex-direction: column;
     transition: border-color .15s, box-shadow .15s;
   }
-  .repo:hover { border-color: var(--green); box-shadow: 0 0 18px rgba(0,255,102,0.15); }
+  .repo:hover { border-color: var(--green); box-shadow: 0 0 18px var(--accent-glow); }
   .repo-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
   .repo-name { font-family: var(--mono); font-weight: 700; font-size: 15px; color: var(--cyan); }
   .repo-name::before { content: "❯ "; color: var(--fg-faint); }
@@ -304,8 +344,26 @@
     color: var(--amber); border: 1px solid var(--amber-dim);
     padding: 2px 7px; border-radius: 3px;
   }
-  .talk .t-title { font-weight: 600; color: #eafff0; }
+  .talk .t-title { font-weight: 600; color: var(--heading); }
   .talk .t-meta { font-family: var(--mono); font-size: 12px; color: var(--fg-dim); margin-left: auto; }
+
+  /* Floating toolbar: theme toggle + PDF */
+  .toolbar {
+    position: fixed; top: 16px; right: 16px; z-index: 30;
+    display: flex; gap: 8px;
+  }
+  .tbtn {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.5px;
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 8px 12px; cursor: pointer;
+    color: var(--fg); background: var(--bg-panel);
+    border: 1px solid var(--line); border-radius: 5px;
+    box-shadow: var(--shadow);
+    transition: color .15s, border-color .15s, box-shadow .15s;
+  }
+  .tbtn:hover { border-color: var(--green); color: var(--green); box-shadow: 0 0 14px var(--accent-glow); }
+  .tbtn .ico { font-size: 14px; line-height: 1; }
+  @media (max-width: 560px) { .toolbar { top: 10px; right: 10px; } .tbtn { padding: 7px 9px; } }
 
   /* Skills grid */
   .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
@@ -331,10 +389,10 @@
     border: 1px solid var(--line);
     border-radius: 4px;
     color: var(--fg);
-    background: rgba(0,255,102,0.04);
+    background: var(--line-soft);
     transition: all 0.15s;
   }
-  .tag:hover { border-color: var(--green); color: var(--green); box-shadow: 0 0 12px rgba(0,255,102,0.25); }
+  .tag:hover { border-color: var(--green); color: var(--green); box-shadow: 0 0 12px var(--accent-glow); }
 
   /* Education / two-col compact */
   .stack { display: grid; gap: 14px; }
@@ -345,7 +403,7 @@
     padding: 14px 18px;
     background: var(--bg-panel);
   }
-  .edu .deg { font-weight: 600; color: #eafff0; }
+  .edu .deg { font-weight: 600; color: var(--heading); }
   .edu .school { color: var(--cyan); }
   .edu .yr { font-family: var(--mono); font-size: 12px; color: var(--amber); }
 
@@ -360,10 +418,11 @@
     display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;
   }
 
-  ::selection { background: var(--green); color: #041007; }
+  ::selection { background: var(--sel-bg); color: var(--sel-fg); }
 
   /* Print */
   @media print {
+    .toolbar { display: none !important; }
     body { background: #fff; color: #111; font-size: 12px; }
     body::before, body::after { display: none; }
     .terminal, .skill-card, .edu, .job, .tag, .contacts li { box-shadow: none; }
@@ -380,9 +439,33 @@
     .wrap { padding: 28px 14px 72px; }
   }
 </style>
+<script>
+  // Set theme before first paint to avoid a flash
+  (function () {
+    try {
+      var t = localStorage.getItem('cv-theme');
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
 </head>
 <body>
 <div class="wrap">
+
+  <!-- ============ TOOLBAR ============ -->
+  <div class="toolbar" role="toolbar" aria-label="Page controls">
+    <button id="themeBtn" class="tbtn" type="button" aria-label="Toggle theme" title="Toggle light / dark theme">
+      <span class="ico" id="themeIco">◐</span><span id="themeLabel">dark</span>
+    </button>
+    <button id="pdfBtn" class="tbtn" type="button" aria-label="Download as PDF" title="Download / print as PDF">
+      <span class="ico">⤓</span>PDF
+    </button>
+  </div>
 
   <!-- ============ HERO / TERMINAL ============ -->
   <div class="terminal">
@@ -726,6 +809,36 @@
         setTimeout(type, 45);
       }
     })();
+  })();
+
+  // Theme toggle (Sublime dark / light), persisted
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeBtn');
+    var label = document.getElementById('themeLabel');
+    function sync() {
+      var t = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      if (label) label.textContent = t;
+    }
+    sync();
+    if (btn) btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('cv-theme', next); } catch (e) {}
+      sync();
+    });
+
+    // Download PDF: force the ink-friendly light theme for the print, then restore
+    var pdf = document.getElementById('pdfBtn');
+    var prev = null;
+    window.addEventListener('beforeprint', function () {
+      prev = root.getAttribute('data-theme');
+      root.setAttribute('data-theme', 'light');
+    });
+    window.addEventListener('afterprint', function () {
+      if (prev) { root.setAttribute('data-theme', prev); prev = null; sync(); }
+    });
+    if (pdf) pdf.addEventListener('click', function () { window.print(); });
   })();
 </script>
 </body>
