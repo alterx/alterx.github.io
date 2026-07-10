@@ -1,0 +1,60 @@
+name: Build & deploy CV to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Permissions the GitHub Pages deployment needs
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time; newer pushes cancel in-progress runs
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up headless Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Build language PDFs (headless Chrome, no header/footer)
+        env:
+          CHROME: ${{ steps.chrome.outputs.chrome-path }}
+          CHROME_FLAGS: "--no-sandbox"
+        run: |
+          chmod +x build-pdf.sh
+          ./build-pdf.sh
+
+      - name: Stage site
+        run: |
+          mkdir -p _site
+          cp index.html Carlos-Vega-CV-EN.pdf Carlos-Vega-CV-ES.pdf _site/
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
