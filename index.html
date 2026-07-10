@@ -197,7 +197,7 @@
         color: var(--green);
       }
       .prompt::before {
-        content: 'carlos@matrix:~$ ';
+        content: 'carlos@alterx:~$ ';
         color: var(--green-dim);
       }
       .term-out {
@@ -1123,7 +1123,9 @@
           </p>
 
           <ul class="contacts">
-            <li data-i18n="loc"><span class="k">loc:</span> Costa Rica · Remote</li>
+            <li data-i18n="loc">
+              <span class="k">loc:</span> Costa Rica · Remote
+            </li>
             <li>
               <span class="k">mail:</span>
               <a href="mailto:clmvega@gmail.com">clmvega@gmail.com</a>
@@ -1266,7 +1268,9 @@
               >
               · <span class="job-co">Informatech Costa Rica</span>
             </div>
-            <span class="job-date" data-i18n="j2.date">JAN 2016 — SEP 2016</span>
+            <span class="job-date" data-i18n="j2.date"
+              >JAN 2016 — SEP 2016</span
+            >
           </div>
           <div class="job-meta">Costa Rica</div>
           <ul>
@@ -1286,7 +1290,9 @@
               >
               · <span class="job-co">Konrad Group</span>
             </div>
-            <span class="job-date" data-i18n="j3.date">MAR 2014 — JAN 2016</span>
+            <span class="job-date" data-i18n="j3.date"
+              >MAR 2014 — JAN 2016</span
+            >
           </div>
           <div class="job-meta">San Pedro, San José, Costa Rica</div>
           <ul>
@@ -1302,7 +1308,9 @@
               <span class="job-title" data-i18n="j4.title">Senior Analyst</span>
               · <span class="job-co">Accenture</span>
             </div>
-            <span class="job-date" data-i18n="j4.date">NOV 2012 — MAR 2014</span>
+            <span class="job-date" data-i18n="j4.date"
+              >NOV 2012 — MAR 2014</span
+            >
           </div>
           <div class="job-meta">Costa Rica</div>
           <ul>
@@ -1322,7 +1330,9 @@
               >
               · <span class="job-co">avVenta Worldwide</span>
             </div>
-            <span class="job-date" data-i18n="j5.date">FEB 2012 — MAR 2014</span>
+            <span class="job-date" data-i18n="j5.date"
+              >FEB 2012 — MAR 2014</span
+            >
           </div>
           <div class="job-meta" data-i18n="j5.meta">
             Front-end development &mdash; CSS3 / HTML5 / JavaScript web pages
@@ -1333,7 +1343,8 @@
         <div class="job compact">
           <div class="job-top">
             <div>
-              <span class="job-title" data-i18n="j6.title">Web Developer</span> ·
+              <span class="job-title" data-i18n="j6.title">Web Developer</span>
+              ·
               <span class="job-co">Samtec Inc</span>
               <span
                 style="
@@ -1345,7 +1356,9 @@
                 >(Intern)</span
               >
             </div>
-            <span class="job-date" data-i18n="j6.date">AUG 2011 — DEC 2011</span>
+            <span class="job-date" data-i18n="j6.date"
+              >AUG 2011 — DEC 2011</span
+            >
           </div>
           <div class="job-meta">Costa Rica</div>
         </div>
@@ -1750,7 +1763,8 @@
             'Re-plataformé los sitios de cara al consumidor de <strong>Encore Capital Group</strong>.',
           'j3.title': 'Ingeniero de Software Senior',
           'j3.date': 'MAR 2014 — ENE 2016',
-          'j3.b1': 'Entregué soluciones para <strong>Deloitte Digital</strong>.',
+          'j3.b1':
+            'Entregué soluciones para <strong>Deloitte Digital</strong>.',
           'j4.title': 'Analista Senior',
           'j4.date': 'NOV 2012 — MAR 2014',
           'j4.b1':
@@ -1826,8 +1840,8 @@
                 ? 'oscuro'
                 : 'claro'
               : isDark()
-                ? 'dark'
-                : 'light';
+              ? 'dark'
+              : 'light';
         }
         function setRole(lang) {
           if (!roleEl) return;
@@ -1845,7 +1859,8 @@
           cancelType();
           setRole(lang);
           root.setAttribute('lang', lang);
-          if (langLabelEl) langLabelEl.textContent = lang === 'es' ? 'ES' : 'EN';
+          if (langLabelEl)
+            langLabelEl.textContent = lang === 'es' ? 'ES' : 'EN';
           updateThemeLabel();
         }
 
