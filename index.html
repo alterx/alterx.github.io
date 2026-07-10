@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Carlos Vega // Software Engineer</title>
+<meta name="description" content="Carlos Vega — Software Engineer. Curriculum vitae." />
+
+<!-- Fonts: Source Sans 3 (body) + Space Mono (terminal/mono) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg:        #0a0e0a;
+    --bg-panel:  #0e140e;
+    --bg-panel2: #111a11;
+    --grid:      rgba(0, 255, 102, 0.04);
+    --fg:        #c8f7d4;
+    --fg-dim:    #6f9a7b;
+    --fg-faint:  #45604d;
+    --green:     #00ff66;
+    --green-dim: #14b850;
+    --amber:     #ffb000;
+    --amber-dim: #b87a00;
+    --cyan:      #35e0e0;
+    --magenta:   #ff5cc8;
+    --line:      rgba(0, 255, 102, 0.15);
+    --line-soft: rgba(0, 255, 102, 0.08);
+    --mono: 'Space Mono', 'Courier New', Courier, monospace;
+    --sans: 'Source Sans 3', system-ui, sans-serif;
+    --shadow: 0 0 0 1px var(--line), 0 24px 60px -30px rgba(0,255,102,0.25);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Background: grid + scanlines + vignette */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0px,
+        rgba(0,0,0,0) 2px,
+        rgba(0,0,0,0.18) 3px,
+        rgba(0,0,0,0) 4px
+      ),
+      radial-gradient(ellipse at 50% 0%, rgba(0,255,102,0.06), transparent 60%);
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    z-index: 1;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+
+  a { color: var(--cyan); text-decoration: none; border-bottom: 1px dotted var(--line); }
+  a:hover { color: var(--green); border-bottom-color: var(--green); }
+
+  /* ---------- Terminal window ---------- */
+  .terminal {
+    background: linear-gradient(180deg, var(--bg-panel), var(--bg));
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .term-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #06090620;
+    border-bottom: 1px solid var(--line-soft);
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg-dim);
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+  .dot.r { background: #ff5f56; box-shadow: 0 0 8px #ff5f5680; }
+  .dot.y { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+  .dot.g { background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .term-title { margin-left: 10px; opacity: 0.7; }
+  .term-body {
+    padding: 26px 26px 30px;
+    font-family: var(--mono);
+    font-size: 15px;
+  }
+  .prompt { color: var(--green); }
+  .prompt::before { content: "carlos@matrix:~$ "; color: var(--green-dim); }
+  .term-out { color: var(--fg-dim); margin: 4px 0 18px; }
+
+  /* Name + title */
+  .name {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(34px, 7vw, 58px);
+    line-height: 1.05;
+    margin: 8px 0 4px;
+    color: #eafff0;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 24px rgba(0,255,102,0.25);
+  }
+  .role {
+    font-family: var(--mono);
+    color: var(--amber);
+    font-size: clamp(15px, 2.6vw, 20px);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .role .cursor {
+    display: inline-block;
+    width: 10px; height: 1.05em;
+    background: var(--amber);
+    margin-left: 4px;
+    vertical-align: -2px;
+    animation: blink 1.05s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .tagline { color: var(--fg); max-width: 62ch; margin: 0 0 22px; }
+
+  /* Contact row */
+  .contacts {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-wrap: wrap; gap: 10px 12px;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .contacts li {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 6px 12px;
+    background: rgba(0,255,102,0.03);
+  }
+  .contacts .k { color: var(--fg-faint); }
+
+  /* ---------- Sections ---------- */
+  section { margin: 46px 0; scroll-margin-top: 24px; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: 14px;
+    font-family: var(--mono);
+    margin-bottom: 24px;
+  }
+  .sec-head h2 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--green);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .sec-head h2::before { content: "// "; color: var(--fg-faint); }
+  .sec-head .rule {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
+  }
+  .sec-head .idx { color: var(--fg-faint); font-size: 13px; }
+
+  /* Experience */
+  .job {
+    position: relative;
+    border-left: 2px solid var(--line);
+    padding: 0 0 8px 24px;
+    margin-left: 6px;
+  }
+  .job + .job { margin-top: 30px; }
+  .job::before {
+    content: "";
+    position: absolute;
+    left: -7px; top: 6px;
+    width: 12px; height: 12px;
+    background: var(--bg);
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--green);
+  }
+  .job-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; align-items: baseline; }
+  .job-title { font-weight: 700; font-size: 19px; color: #eafff0; }
+  .job-co { color: var(--cyan); font-weight: 600; }
+  .job-date {
+    font-family: var(--mono); font-size: 12px; color: var(--amber);
+    white-space: nowrap; letter-spacing: 0.5px;
+  }
+  .job-meta { font-family: var(--mono); font-size: 12px; color: var(--fg-dim); margin: 2px 0 10px; }
+  .job ul { margin: 8px 0 0; padding-left: 0; list-style: none; }
+  .job li { position: relative; padding-left: 22px; margin: 7px 0; color: var(--fg); }
+  .job li::before {
+    content: ">";
+    position: absolute; left: 0; top: 0;
+    color: var(--green); font-family: var(--mono); font-weight: 700;
+  }
+  .job.compact { padding-bottom: 0; }
+  .job.compact .job-title { font-size: 17px; }
+
+  /* Client project sub-cards nested under a role */
+  .clients-label {
+    font-family: var(--mono); font-size: 12px; color: var(--fg-faint);
+    letter-spacing: 1px; text-transform: uppercase; margin: 16px 0 10px;
+  }
+  .clients { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .client {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--bg-panel2);
+    padding: 13px 15px;
+  }
+  .client-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .client-badge {
+    font-family: var(--mono); font-size: 10px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 3px;
+    color: #041007; background: var(--amber);
+  }
+  .client h4 { margin: 0; font-size: 15px; color: #eafff0; font-weight: 700; }
+  .client p { margin: 0; font-size: 13.5px; color: var(--fg-dim); line-height: 1.5; }
+  .client .stackline { font-family: var(--mono); font-size: 11.5px; color: var(--green-dim); margin-top: 7px; }
+  .client a { font-size: 12px; }
+
+  /* Skills grid */
+  .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .skill-card {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--bg-panel2);
+    padding: 16px 18px;
+  }
+  .skill-card h3 {
+    margin: 0 0 12px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--amber);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--fg);
+    background: rgba(0,255,102,0.04);
+    transition: all 0.15s;
+  }
+  .tag:hover { border-color: var(--green); color: var(--green); box-shadow: 0 0 12px rgba(0,255,102,0.25); }
+
+  /* Education / two-col compact */
+  .stack { display: grid; gap: 14px; }
+  .edu {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px;
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    padding: 14px 18px;
+    background: var(--bg-panel);
+  }
+  .edu .deg { font-weight: 600; color: #eafff0; }
+  .edu .school { color: var(--cyan); }
+  .edu .yr { font-family: var(--mono); font-size: 12px; color: var(--amber); }
+
+  /* Footer */
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--line);
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg-faint);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;
+  }
+
+  ::selection { background: var(--green); color: #041007; }
+
+  /* Print */
+  @media print {
+    body { background: #fff; color: #111; font-size: 12px; }
+    body::before, body::after { display: none; }
+    .terminal, .skill-card, .edu, .job, .tag, .contacts li { box-shadow: none; }
+    a { color: #06c; }
+    .name, .job-title, .edu .deg { color: #000; text-shadow: none; }
+    .term-body, .name, .role, .sec-head h2 { color: #111; }
+    .green, .prompt, .job li::before, .sec-head h2 { color: #087f3f !important; }
+    .role, .job-date, .edu .yr { color: #a15c00; }
+  }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .term-body { padding: 20px 16px 24px; }
+    .wrap { padding: 28px 14px 72px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ HERO / TERMINAL ============ -->
+  <div class="terminal">
+    <div class="term-bar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="term-title">carlos_vega — resume.sh — 80x24</span>
+    </div>
+    <div class="term-body">
+      <div class="prompt">whoami</div>
+      <div class="term-out">Loading profile...</div>
+
+      <h1 class="name">Carlos Vega</h1>
+      <div class="role">Senior Software Engineer &amp; Tech Lead<span class="cursor"></span></div>
+
+      <p class="tagline">
+        15+ years of software engineering &mdash; from requirement analysis and
+        project scheduling to architectural design and delivery. I lead teams
+        through every phase of the development cycle to ship quality products
+        that meet and exceed expectations. A well-versed front-end web engineer
+        &mdash; React, Next.js, Angular &mdash; building cross-platform mobile in
+        React Native and cloud-native platforms on AWS, with AI-augmented
+        workflows woven through the whole lifecycle.
+      </p>
+
+      <ul class="contacts">
+        <li><span class="k">loc:</span> Costa Rica · Remote</li>
+        <li><span class="k">mail:</span> <a href="mailto:clmvega@gmail.com">clmvega@gmail.com</a></li>
+        <li><span class="k">in:</span> <a href="https://www.linkedin.com/in/carlosvegar/" target="_blank" rel="noopener">carlosvegar</a></li>
+        <li><span class="k">git:</span> <a href="https://github.com/alterx" target="_blank" rel="noopener">github.com/alterx</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience">
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <span class="rule"></span>
+      <span class="idx">[01]</span>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <div><span class="job-title">Senior Software Developer</span> · <span class="job-co">18Techs</span></div>
+        <span class="job-date">SEP 2016 — PRESENT</span>
+      </div>
+      <div class="job-meta">Freelance / Contract · Remote · React Native · React Query · AWS · TypeScript</div>
+      <ul>
+        <li>Deliver end-to-end product engineering for a portfolio of clients &mdash; mobile front ends, cloud back ends, and everything in between.</li>
+        <li>Standardized the mobile stack on <strong>React Native</strong> with <strong>React Query</strong> for server-state caching, optimistic updates, and resilient offline behavior.</li>
+        <li>Built and operated services on <strong>AWS</strong>, owning deployment, reliability, and observability.</li>
+        <li>Embedded AI tooling (Claude, Codex, Cursor) into day-to-day development to accelerate delivery across teams.</li>
+      </ul>
+
+      <div class="clients-label">// Selected client work</div>
+      <div class="clients">
+        <div class="client">
+          <div class="client-top">
+            <span class="client-badge">social</span>
+            <h4>mUnity</h4>
+          </div>
+          <p>Cross-platform community &amp; social media app on iOS and Android &mdash; media capture/upload, reactions, activity feeds, i18n, and durable upload queues that survive app kills.</p>
+          <div class="stackline">React Native · React Query</div>
+          <div style="margin-top:8px"><a href="https://www.munity.us/" target="_blank" rel="noopener">munity.us ↗</a></div>
+        </div>
+        <div class="client">
+          <div class="client-top">
+            <span class="client-badge">ad-tech</span>
+            <h4>QUAD</h4>
+          </div>
+          <p>Advertising platform for a Stockholm-based ad-tech company &mdash; designed and scaled cloud services powering ad delivery and reporting.</p>
+          <div class="stackline">AWS · Cloud services</div>
+          <div style="margin-top:8px"><a href="https://quad.se/" target="_blank" rel="noopener">quad.se ↗</a></div>
+        </div>
+        <div class="client">
+          <div class="client-top">
+            <span class="client-badge">mobility</span>
+            <h4>Envoy</h4>
+          </div>
+          <p>EV car-sharing app (&ldquo;Mobility as an Amenity&rdquo;) &mdash; app-based reservations, keyless vehicle access, and property-scoped fleet flows.</p>
+          <div class="stackline">React Native · Mobile</div>
+          <div style="margin-top:8px"><a href="https://www.envoythere.com/" target="_blank" rel="noopener">envoythere.com ↗</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="job compact">
+      <div class="job-top">
+        <div><span class="job-title">Front-End Tech Lead</span> · <span class="job-co">Informatech Costa Rica</span></div>
+        <span class="job-date">JAN 2016 — SEP 2016</span>
+      </div>
+      <div class="job-meta">Costa Rica</div>
+      <ul>
+        <li>Led front-end development as tech lead.</li>
+        <li>Re-platformed <strong>Encore Capital Group</strong>'s consumer-facing sites.</li>
+      </ul>
+    </div>
+
+    <div class="job compact">
+      <div class="job-top">
+        <div><span class="job-title">Senior Software Engineer</span> · <span class="job-co">Konrad Group</span></div>
+        <span class="job-date">MAR 2014 — JAN 2016</span>
+      </div>
+      <div class="job-meta">San Pedro, San José, Costa Rica</div>
+      <ul>
+        <li>Delivered solutions for <strong>Deloitte Digital</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="job compact">
+      <div class="job-top">
+        <div><span class="job-title">Senior Analyst</span> · <span class="job-co">Accenture</span></div>
+        <span class="job-date">NOV 2012 — MAR 2014</span>
+      </div>
+      <div class="job-meta">Costa Rica</div>
+      <ul>
+        <li>Delivered solutions to <strong>SAY Media</strong>, <strong>DuPont</strong>, <strong>Specialized</strong>, and <strong>Samtec Interconnect</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="job compact">
+      <div class="job-top">
+        <div><span class="job-title">Web Developer &amp; Designer</span> · <span class="job-co">avVenta Worldwide</span></div>
+        <span class="job-date">FEB 2012 — MAR 2014</span>
+      </div>
+      <div class="job-meta">Front-end development &mdash; CSS3 / HTML5 / JavaScript web pages &amp; web apps</div>
+    </div>
+
+    <div class="job compact">
+      <div class="job-top">
+        <div><span class="job-title">Web Developer</span> · <span class="job-co">Samtec Inc</span> <span style="color:var(--fg-faint);font-family:var(--mono);font-size:12px;">(Intern)</span></div>
+        <span class="job-date">AUG 2011 — DEC 2011</span>
+      </div>
+      <div class="job-meta">Costa Rica</div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills">
+    <div class="sec-head">
+      <h2>Skills</h2>
+      <span class="rule"></span>
+      <span class="idx">[02]</span>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <div class="tags">
+          <span class="tag">TypeScript</span><span class="tag">JavaScript</span>
+          <span class="tag">Python</span><span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Frontend Web</h3>
+        <div class="tags">
+          <span class="tag">React.js</span><span class="tag">Next.js</span>
+          <span class="tag">Angular</span><span class="tag">HTML5</span><span class="tag">CSS3</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Mobile</h3>
+        <div class="tags">
+          <span class="tag">React Native</span><span class="tag">React Query</span>
+          <span class="tag">Expo</span><span class="tag">Redux Toolkit</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Backend / Cloud</h3>
+        <div class="tags">
+          <span class="tag">AWS</span><span class="tag">Node.js</span>
+          <span class="tag">REST / GraphQL</span><span class="tag">CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>AI-Augmented Dev</h3>
+        <div class="tags">
+          <span class="tag">Claude</span><span class="tag">Codex</span>
+          <span class="tag">Cursor</span><span class="tag">LLM workflows</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Practices</h3>
+        <div class="tags">
+          <span class="tag">Offline-first</span><span class="tag">System Design</span>
+          <span class="tag">i18n</span><span class="tag">Testing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AI IN THE LOOP ============ -->
+  <section id="ai">
+    <div class="sec-head">
+      <h2>AI in the Loop</h2>
+      <span class="rule"></span>
+      <span class="idx">[03]</span>
+    </div>
+    <div class="terminal">
+      <div class="term-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="term-title">ai_workflow.log</span>
+      </div>
+      <div class="term-body">
+        <div class="prompt">cat ai_workflow.log</div>
+        <div class="term-out">
+          Integrating AI across the development lifecycle &mdash; not as a novelty,<br>
+          but as day-to-day leverage for shipping faster with fewer defects.
+        </div>
+        <ul class="job" style="border:none;padding-left:0;margin:0;list-style:none;">
+          <li style="padding-left:22px;position:relative;margin:7px 0;"><span style="position:absolute;left:0;color:var(--green);font-family:var(--mono);font-weight:700;">&gt;</span> Pair with <strong>Claude</strong> and <strong>Codex</strong> for architecture, refactors, and code review.</li>
+          <li style="padding-left:22px;position:relative;margin:7px 0;"><span style="position:absolute;left:0;color:var(--green);font-family:var(--mono);font-weight:700;">&gt;</span> Use <strong>Cursor</strong> as a primary editor for AI-assisted, in-context development.</li>
+          <li style="padding-left:22px;position:relative;margin:7px 0;"><span style="position:absolute;left:0;color:var(--green);font-family:var(--mono);font-weight:700;">&gt;</span> Build repeatable AI workflows &mdash; scaffolding, test generation, and docs &mdash; into the team's process.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section id="education">
+    <div class="sec-head">
+      <h2>Education</h2>
+      <span class="rule"></span>
+      <span class="idx">[04]</span>
+    </div>
+    <div class="stack">
+      <div class="edu">
+        <div>
+          <span class="deg">Bachelor's degree, Computer Software Engineering</span> — <span class="school">Universidad Nacional de Costa Rica</span>
+        </div>
+        <span class="yr">2008 — 2011</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <span>$ built with html + css · no frameworks · hosted on github pages</span>
+    <span>© <span id="yr">2026</span> Carlos Vega</span>
+  </footer>
+
+</div>
+
+<script>
+  // Small touch: type-out the role line for effect
+  (function () {
+    var el = document.querySelector('.role');
+    if (!el) return;
+    var cursor = el.querySelector('.cursor');
+    var full = el.childNodes[0].nodeValue.trim();
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    el.childNodes[0].nodeValue = '';
+    var i = 0;
+    (function type() {
+      if (i <= full.length) {
+        el.childNodes[0].nodeValue = full.slice(0, i++);
+        setTimeout(type, 45);
+      }
+    })();
+  })();
+</script>
+</body>
+</html>
