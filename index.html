@@ -1,845 +1,1716 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Carlos Vega // Software Engineer</title>
-<meta name="description" content="Carlos Vega — Software Engineer. Curriculum vitae." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carlos Vega // Software Engineer</title>
+    <meta
+      name="description"
+      content="Carlos Vega — Software Engineer. Curriculum vitae."
+    />
 
-<!-- Fonts: Source Sans 3 (body) + Space Mono (terminal/mono) -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+    <!-- Fonts: Source Sans 3 (body) + Space Mono (terminal/mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-  :root {
-    --mono: 'Space Mono', 'Courier New', Courier, monospace;
-    --sans: 'Source Sans 3', system-ui, sans-serif;
-  }
-
-  /* ===== Sublime "Monokai" — classic dark ===== */
-  :root, :root[data-theme="dark"] {
-    --bg:        #272822;
-    --bg-panel:  #2c2d26;
-    --bg-panel2: #32332b;
-    --grid:      rgba(166,226,46,0.045);
-    --fg:        #f8f8f2;
-    --fg-dim:    #b3af9a;
-    --fg-faint:  #75715e;
-    --green:     #a6e22e;
-    --green-dim: #79a018;
-    --amber:     #fd971f;
-    --amber-dim: #b96f16;
-    --cyan:      #66d9ef;
-    --magenta:   #f92672;
-    --line:      rgba(166,226,46,0.16);
-    --line-soft: rgba(166,226,46,0.08);
-    --scan:      rgba(0,0,0,0.16);
-    --glow:      rgba(166,226,46,0.06);
-    --accent-glow: rgba(166,226,46,0.25);
-    --name-glow: rgba(166,226,46,0.25);
-    --sel-bg:    #a6e22e;
-    --sel-fg:    #1b1c17;
-    --heading:   #eafff0;
-    --shadow: 0 0 0 1px var(--line), 0 24px 60px -30px rgba(0,0,0,0.6);
-    color-scheme: dark;
-  }
-
-  /* ===== Sublime — classic light ===== */
-  :root[data-theme="light"] {
-    --bg:        #fbfbf3;
-    --bg-panel:  #ffffff;
-    --bg-panel2: #f4f4ea;
-    --grid:      rgba(0,0,0,0.035);
-    --fg:        #2b2a22;
-    --fg-dim:    #6c695a;
-    --fg-faint:  #a29e8c;
-    --green:     #5f9a00;
-    --green-dim: #4a7800;
-    --amber:     #c2740a;
-    --amber-dim: #955905;
-    --cyan:      #1b7f9e;
-    --magenta:   #d01b60;
-    --line:      rgba(0,0,0,0.12);
-    --line-soft: rgba(0,0,0,0.06);
-    --scan:      rgba(0,0,0,0.02);
-    --glow:      rgba(95,154,0,0.05);
-    --accent-glow: rgba(95,154,0,0.18);
-    --name-glow: rgba(95,154,0,0.10);
-    --sel-bg:    #ffe08a;
-    --sel-fg:    #2b2a22;
-    --heading:   #1b1a12;
-    --shadow: 0 1px 0 1px rgba(0,0,0,0.05), 0 24px 50px -30px rgba(0,0,0,0.28);
-    color-scheme: light;
-  }
-
-  * { box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--sans);
-    font-size: 17px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  /* Background: grid + scanlines + vignette */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-      repeating-linear-gradient(
-        to bottom,
-        rgba(0,0,0,0) 0px,
-        rgba(0,0,0,0) 2px,
-        var(--scan) 3px,
-        rgba(0,0,0,0) 4px
-      ),
-      radial-gradient(ellipse at 50% 0%, var(--glow), transparent 60%);
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    z-index: 1;
-  }
-
-  .wrap {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 48px 24px 96px;
-  }
-
-  a { color: var(--cyan); text-decoration: none; border-bottom: 1px dotted var(--line); }
-  a:hover { color: var(--green); border-bottom-color: var(--green); }
-
-  /* ---------- Terminal window ---------- */
-  .terminal {
-    background: linear-gradient(180deg, var(--bg-panel), var(--bg));
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    margin-bottom: 40px;
-  }
-  .term-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
-    background: #06090620;
-    border-bottom: 1px solid var(--line-soft);
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--fg-dim);
-  }
-  .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
-  .dot.r { background: #ff5f56; box-shadow: 0 0 8px #ff5f5680; }
-  .dot.y { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
-  .dot.g { background: var(--green); box-shadow: 0 0 8px var(--green); }
-  .term-title { margin-left: 10px; opacity: 0.7; }
-  .term-body {
-    padding: 26px 26px 30px;
-    font-family: var(--mono);
-    font-size: 15px;
-  }
-  .prompt { color: var(--green); }
-  .prompt::before { content: "carlos@matrix:~$ "; color: var(--green-dim); }
-  .term-out { color: var(--fg-dim); margin: 4px 0 18px; }
-
-  /* Name + title */
-  .name {
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: clamp(34px, 7vw, 58px);
-    line-height: 1.05;
-    margin: 8px 0 4px;
-    color: var(--heading);
-    letter-spacing: -0.5px;
-    text-shadow: 0 0 24px var(--name-glow);
-  }
-  .role {
-    font-family: var(--mono);
-    color: var(--amber);
-    font-size: clamp(15px, 2.6vw, 20px);
-    letter-spacing: 1px;
-    margin-bottom: 16px;
-  }
-  .role .cursor {
-    display: inline-block;
-    width: 10px; height: 1.05em;
-    background: var(--amber);
-    margin-left: 4px;
-    vertical-align: -2px;
-    animation: blink 1.05s steps(1) infinite;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
-
-  .tagline { color: var(--fg); max-width: 62ch; margin: 0 0 22px; }
-
-  /* Contact row */
-  .contacts {
-    list-style: none;
-    padding: 0; margin: 0;
-    display: flex; flex-wrap: wrap; gap: 10px 12px;
-    font-family: var(--mono);
-    font-size: 13px;
-  }
-  .contacts li {
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 6px 12px;
-    background: var(--line-soft);
-  }
-  .contacts .k { color: var(--fg-faint); }
-
-  /* ---------- Sections ---------- */
-  section { margin: 46px 0; scroll-margin-top: 24px; }
-  .sec-head {
-    display: flex; align-items: baseline; gap: 14px;
-    font-family: var(--mono);
-    margin-bottom: 24px;
-  }
-  .sec-head h2 {
-    margin: 0;
-    font-size: 20px;
-    color: var(--green);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-  .sec-head h2::before { content: "// "; color: var(--fg-faint); }
-  .sec-head .rule {
-    flex: 1;
-    height: 1px;
-    background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
-  }
-  .sec-head .idx { color: var(--fg-faint); font-size: 13px; }
-
-  /* Experience */
-  .job {
-    position: relative;
-    border-left: 2px solid var(--line);
-    padding: 0 0 8px 24px;
-    margin-left: 6px;
-  }
-  .job + .job { margin-top: 30px; }
-  .job::before {
-    content: "";
-    position: absolute;
-    left: -7px; top: 6px;
-    width: 12px; height: 12px;
-    background: var(--bg);
-    border: 2px solid var(--green);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--green);
-  }
-  .job-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; align-items: baseline; }
-  .job-title { font-weight: 700; font-size: 19px; color: var(--heading); }
-  .job-co { color: var(--cyan); font-weight: 600; }
-  .job-date {
-    font-family: var(--mono); font-size: 12px; color: var(--amber);
-    white-space: nowrap; letter-spacing: 0.5px;
-  }
-  .job-meta { font-family: var(--mono); font-size: 12px; color: var(--fg-dim); margin: 2px 0 10px; }
-  .job ul { margin: 8px 0 0; padding-left: 0; list-style: none; }
-  .job li { position: relative; padding-left: 22px; margin: 7px 0; color: var(--fg); }
-  .job li::before {
-    content: ">";
-    position: absolute; left: 0; top: 0;
-    color: var(--green); font-family: var(--mono); font-weight: 700;
-  }
-  .job.compact { padding-bottom: 0; }
-  .job.compact .job-title { font-size: 17px; }
-
-  /* Client project sub-cards nested under a role */
-  .clients-label {
-    font-family: var(--mono); font-size: 12px; color: var(--fg-faint);
-    letter-spacing: 1px; text-transform: uppercase; margin: 16px 0 10px;
-  }
-  .clients { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-  .client {
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    background: var(--bg-panel2);
-    padding: 13px 15px;
-  }
-  .client-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-  .client-badge {
-    font-family: var(--mono); font-size: 10px; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    padding: 2px 7px; border-radius: 3px;
-    color: #041007; background: var(--amber);
-  }
-  .client h4 { margin: 0; font-size: 15px; color: var(--heading); font-weight: 700; }
-  .client p { margin: 0; font-size: 13.5px; color: var(--fg-dim); line-height: 1.5; }
-  .client .stackline { font-family: var(--mono); font-size: 11.5px; color: var(--green-dim); margin-top: 7px; }
-  .client a { font-size: 12px; }
-
-  /* Open-source repo cards */
-  .repos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
-  .repo {
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    background: var(--bg-panel2);
-    padding: 15px 17px;
-    display: flex; flex-direction: column;
-    transition: border-color .15s, box-shadow .15s;
-  }
-  .repo:hover { border-color: var(--green); box-shadow: 0 0 18px var(--accent-glow); }
-  .repo-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
-  .repo-name { font-family: var(--mono); font-weight: 700; font-size: 15px; color: var(--cyan); }
-  .repo-name::before { content: "❯ "; color: var(--fg-faint); }
-  .repo:hover .repo-name { color: var(--green); }
-  .repo .stars { font-family: var(--mono); font-size: 12px; color: var(--amber); white-space: nowrap; }
-  .repo p { margin: 0; font-size: 13.5px; color: var(--fg-dim); line-height: 1.5; flex: 1; }
-  .repo .lang { font-family: var(--mono); font-size: 11px; color: var(--fg-faint); margin-top: 10px; letter-spacing: 0.5px; }
-
-  .repo.featured {
-    border-color: var(--amber-dim);
-    background:
-      radial-gradient(120% 140% at 0% 0%, rgba(255,176,0,0.10), transparent 55%),
-      var(--bg-panel2);
-    margin-bottom: 14px;
-    box-shadow: 0 0 24px -6px rgba(255,176,0,0.25);
-  }
-  .repo.featured:hover { border-color: var(--amber); box-shadow: 0 0 28px -4px rgba(255,176,0,0.4); }
-  .repo.featured .repo-name { color: var(--amber); font-size: 17px; }
-  .repo.featured:hover .repo-name { color: var(--amber); }
-  .repo.featured p { color: var(--fg); }
-  .repo.featured .featured-badge {
-    color: #041007; background: var(--amber);
-    padding: 3px 9px; border-radius: 3px; font-weight: 700;
-  }
-
-  /* Talks & teaching list */
-  .talks { display: grid; gap: 10px; }
-  .talk {
-    display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px;
-    border: 1px solid var(--line-soft);
-    border-left: 3px solid var(--amber);
-    border-radius: 0 6px 6px 0;
-    padding: 12px 16px;
-    background: var(--bg-panel);
-  }
-  .talk .kind {
-    font-family: var(--mono); font-size: 10px; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    color: var(--amber); border: 1px solid var(--amber-dim);
-    padding: 2px 7px; border-radius: 3px;
-  }
-  .talk .t-title { font-weight: 600; color: var(--heading); }
-  .talk .t-meta { font-family: var(--mono); font-size: 12px; color: var(--fg-dim); margin-left: auto; }
-
-  /* Floating toolbar: theme toggle + PDF */
-  .toolbar {
-    position: fixed; top: 16px; right: 16px; z-index: 30;
-    display: flex; gap: 8px;
-  }
-  .tbtn {
-    font-family: var(--mono); font-size: 12px; letter-spacing: 0.5px;
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 8px 12px; cursor: pointer;
-    color: var(--fg); background: var(--bg-panel);
-    border: 1px solid var(--line); border-radius: 5px;
-    box-shadow: var(--shadow);
-    transition: color .15s, border-color .15s, box-shadow .15s;
-  }
-  .tbtn:hover { border-color: var(--green); color: var(--green); box-shadow: 0 0 14px var(--accent-glow); }
-  .tbtn .ico { font-size: 14px; line-height: 1; }
-  @media (max-width: 560px) { .toolbar { top: 10px; right: 10px; } .tbtn { padding: 7px 9px; } }
-
-  /* Skills grid */
-  .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
-  .skill-card {
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    background: var(--bg-panel2);
-    padding: 16px 18px;
-  }
-  .skill-card h3 {
-    margin: 0 0 12px;
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--amber);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag {
-    font-family: var(--mono);
-    font-size: 12.5px;
-    padding: 4px 10px;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    color: var(--fg);
-    background: var(--line-soft);
-    transition: all 0.15s;
-  }
-  .tag:hover { border-color: var(--green); color: var(--green); box-shadow: 0 0 12px var(--accent-glow); }
-
-  /* Education / two-col compact */
-  .stack { display: grid; gap: 14px; }
-  .edu {
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px;
-    border: 1px solid var(--line-soft);
-    border-radius: 6px;
-    padding: 14px 18px;
-    background: var(--bg-panel);
-  }
-  .edu .deg { font-weight: 600; color: var(--heading); }
-  .edu .school { color: var(--cyan); }
-  .edu .yr { font-family: var(--mono); font-size: 12px; color: var(--amber); }
-
-  /* Footer */
-  footer {
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px dashed var(--line);
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--fg-faint);
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;
-  }
-
-  ::selection { background: var(--sel-bg); color: var(--sel-fg); }
-
-  /* Print */
-  @media print {
-    .toolbar { display: none !important; }
-    body { background: #fff; color: #111; font-size: 12px; }
-    body::before, body::after { display: none; }
-    .terminal, .skill-card, .edu, .job, .tag, .contacts li { box-shadow: none; }
-    a { color: #06c; }
-    .name, .job-title, .edu .deg { color: #000; text-shadow: none; }
-    .term-body, .name, .role, .sec-head h2 { color: #111; }
-    .green, .prompt, .job li::before, .sec-head h2 { color: #087f3f !important; }
-    .role, .job-date, .edu .yr { color: #a15c00; }
-  }
-
-  @media (max-width: 560px) {
-    body { font-size: 16px; }
-    .term-body { padding: 20px 16px 24px; }
-    .wrap { padding: 28px 14px 72px; }
-  }
-</style>
-<script>
-  // Set theme before first paint to avoid a flash
-  (function () {
-    try {
-      var t = localStorage.getItem('cv-theme');
-      if (t !== 'light' && t !== 'dark') {
-        t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    <style>
+      :root {
+        --mono: 'Space Mono', 'Courier New', Courier, monospace;
+        --sans: 'Source Sans 3', system-ui, sans-serif;
       }
-      document.documentElement.setAttribute('data-theme', t);
-    } catch (e) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  })();
-</script>
-</head>
-<body>
-<div class="wrap">
 
-  <!-- ============ TOOLBAR ============ -->
-  <div class="toolbar" role="toolbar" aria-label="Page controls">
-    <button id="themeBtn" class="tbtn" type="button" aria-label="Toggle theme" title="Toggle light / dark theme">
-      <span class="ico" id="themeIco">◐</span><span id="themeLabel">dark</span>
-    </button>
-    <button id="pdfBtn" class="tbtn" type="button" aria-label="Download as PDF" title="Download / print as PDF">
-      <span class="ico">⤓</span>PDF
-    </button>
-  </div>
-
-  <!-- ============ HERO / TERMINAL ============ -->
-  <div class="terminal">
-    <div class="term-bar">
-      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-      <span class="term-title">carlos_vega — resume.sh — 80x24</span>
-    </div>
-    <div class="term-body">
-      <div class="prompt">whoami</div>
-      <div class="term-out">Loading profile...</div>
-
-      <h1 class="name">Carlos Vega</h1>
-      <div class="role">Senior Software Engineer &amp; Tech Lead<span class="cursor"></span></div>
-
-      <p class="tagline">
-        15+ years of software engineering &mdash; from requirement analysis and
-        project scheduling to architectural design and delivery. I lead teams
-        through every phase of the development cycle to ship quality products
-        that meet and exceed expectations. A well-versed front-end web engineer
-        &mdash; React, Next.js, Angular &mdash; building cross-platform mobile in
-        React Native and cloud-native platforms on AWS, with AI-augmented
-        workflows woven through the whole lifecycle.
-      </p>
-
-      <ul class="contacts">
-        <li><span class="k">loc:</span> Costa Rica · Remote</li>
-        <li><span class="k">mail:</span> <a href="mailto:clmvega@gmail.com">clmvega@gmail.com</a></li>
-        <li><span class="k">in:</span> <a href="https://www.linkedin.com/in/carlosvegar/" target="_blank" rel="noopener">carlosvegar</a></li>
-        <li><span class="k">git:</span> <a href="https://github.com/alterx" target="_blank" rel="noopener">github.com/alterx</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ============ EXPERIENCE ============ -->
-  <section id="experience">
-    <div class="sec-head">
-      <h2>Experience</h2>
-      <span class="rule"></span>
-      <span class="idx">[01]</span>
-    </div>
-
-    <div class="job">
-      <div class="job-top">
-        <div><span class="job-title">Senior Software Developer</span> · <span class="job-co">18Techs</span></div>
-        <span class="job-date">SEP 2016 — PRESENT</span>
-      </div>
-      <div class="job-meta">Freelance / Contract · Remote · React Native · React Query · AWS · TypeScript</div>
-      <ul>
-        <li>Deliver end-to-end product engineering for a portfolio of clients &mdash; mobile front ends, cloud back ends, and everything in between.</li>
-        <li>Standardized the mobile stack on <strong>React Native</strong> with <strong>React Query</strong> for server-state caching, optimistic updates, and resilient offline behavior.</li>
-        <li>Built and operated services on <strong>AWS</strong>, owning deployment, reliability, and observability.</li>
-        <li>Embedded AI tooling (Claude, Codex, Cursor) into day-to-day development to accelerate delivery across teams.</li>
-      </ul>
-
-      <div class="clients-label">// Selected client work</div>
-      <div class="clients">
-        <div class="client">
-          <div class="client-top">
-            <span class="client-badge">social</span>
-            <h4>mUnity</h4>
-          </div>
-          <p>Cross-platform community &amp; social media app on iOS and Android &mdash; media capture/upload, reactions, activity feeds, i18n, and durable upload queues that survive app kills.</p>
-          <div class="stackline">React Native · React Query</div>
-          <div style="margin-top:8px"><a href="https://www.munity.us/" target="_blank" rel="noopener">munity.us ↗</a></div>
-        </div>
-        <div class="client">
-          <div class="client-top">
-            <span class="client-badge">ad-tech</span>
-            <h4>QUAD</h4>
-          </div>
-          <p>Advertising platform for a Stockholm-based ad-tech company &mdash; designed and scaled cloud services powering ad delivery and reporting.</p>
-          <div class="stackline">AWS · Cloud services</div>
-          <div style="margin-top:8px"><a href="https://quad.se/" target="_blank" rel="noopener">quad.se ↗</a></div>
-        </div>
-        <div class="client">
-          <div class="client-top">
-            <span class="client-badge">mobility</span>
-            <h4>Envoy</h4>
-          </div>
-          <p>EV car-sharing app (&ldquo;Mobility as an Amenity&rdquo;) &mdash; app-based reservations, keyless vehicle access, and property-scoped fleet flows.</p>
-          <div class="stackline">React Native · Mobile</div>
-          <div style="margin-top:8px"><a href="https://www.envoythere.com/" target="_blank" rel="noopener">envoythere.com ↗</a></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="job compact">
-      <div class="job-top">
-        <div><span class="job-title">Front-End Tech Lead</span> · <span class="job-co">Informatech Costa Rica</span></div>
-        <span class="job-date">JAN 2016 — SEP 2016</span>
-      </div>
-      <div class="job-meta">Costa Rica</div>
-      <ul>
-        <li>Led front-end development as tech lead.</li>
-        <li>Re-platformed <strong>Encore Capital Group</strong>'s consumer-facing sites.</li>
-      </ul>
-    </div>
-
-    <div class="job compact">
-      <div class="job-top">
-        <div><span class="job-title">Senior Software Engineer</span> · <span class="job-co">Konrad Group</span></div>
-        <span class="job-date">MAR 2014 — JAN 2016</span>
-      </div>
-      <div class="job-meta">San Pedro, San José, Costa Rica</div>
-      <ul>
-        <li>Delivered solutions for <strong>Deloitte Digital</strong>.</li>
-      </ul>
-    </div>
-
-    <div class="job compact">
-      <div class="job-top">
-        <div><span class="job-title">Senior Analyst</span> · <span class="job-co">Accenture</span></div>
-        <span class="job-date">NOV 2012 — MAR 2014</span>
-      </div>
-      <div class="job-meta">Costa Rica</div>
-      <ul>
-        <li>Delivered solutions to <strong>SAY Media</strong>, <strong>DuPont</strong>, <strong>Specialized</strong>, and <strong>Samtec Interconnect</strong>.</li>
-      </ul>
-    </div>
-
-    <div class="job compact">
-      <div class="job-top">
-        <div><span class="job-title">Web Developer &amp; Designer</span> · <span class="job-co">avVenta Worldwide</span></div>
-        <span class="job-date">FEB 2012 — MAR 2014</span>
-      </div>
-      <div class="job-meta">Front-end development &mdash; CSS3 / HTML5 / JavaScript web pages &amp; web apps</div>
-    </div>
-
-    <div class="job compact">
-      <div class="job-top">
-        <div><span class="job-title">Web Developer</span> · <span class="job-co">Samtec Inc</span> <span style="color:var(--fg-faint);font-family:var(--mono);font-size:12px;">(Intern)</span></div>
-        <span class="job-date">AUG 2011 — DEC 2011</span>
-      </div>
-      <div class="job-meta">Costa Rica</div>
-    </div>
-  </section>
-
-  <!-- ============ SKILLS ============ -->
-  <section id="skills">
-    <div class="sec-head">
-      <h2>Skills</h2>
-      <span class="rule"></span>
-      <span class="idx">[02]</span>
-    </div>
-    <div class="skill-grid">
-      <div class="skill-card">
-        <h3>Languages</h3>
-        <div class="tags">
-          <span class="tag">TypeScript</span><span class="tag">JavaScript</span>
-          <span class="tag">Python</span><span class="tag">SQL</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Frontend Web</h3>
-        <div class="tags">
-          <span class="tag">React.js</span><span class="tag">Next.js</span>
-          <span class="tag">Angular</span><span class="tag">HTML5</span><span class="tag">CSS3</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Mobile</h3>
-        <div class="tags">
-          <span class="tag">React Native</span><span class="tag">React Query</span>
-          <span class="tag">Expo</span><span class="tag">Redux Toolkit</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Backend / Cloud</h3>
-        <div class="tags">
-          <span class="tag">AWS</span><span class="tag">Node.js</span>
-          <span class="tag">REST / GraphQL</span><span class="tag">CI/CD</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>AI-Augmented Dev</h3>
-        <div class="tags">
-          <span class="tag">Claude</span><span class="tag">Codex</span>
-          <span class="tag">Cursor</span><span class="tag">LLM workflows</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Practices</h3>
-        <div class="tags">
-          <span class="tag">Offline-first</span><span class="tag">System Design</span>
-          <span class="tag">i18n</span><span class="tag">Testing</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ AI IN THE LOOP ============ -->
-  <section id="ai">
-    <div class="sec-head">
-      <h2>AI in the Loop</h2>
-      <span class="rule"></span>
-      <span class="idx">[03]</span>
-    </div>
-    <div class="terminal">
-      <div class="term-bar">
-        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-        <span class="term-title">ai_workflow.log</span>
-      </div>
-      <div class="term-body">
-        <div class="prompt">cat ai_workflow.log</div>
-        <div class="term-out">
-          Integrating AI across the development lifecycle &mdash; not as a novelty,<br>
-          but as day-to-day leverage for shipping faster with fewer defects.
-        </div>
-        <ul class="job" style="border:none;padding-left:0;margin:0;list-style:none;">
-          <li style="padding-left:22px;position:relative;margin:7px 0;"><span style="position:absolute;left:0;color:var(--green);font-family:var(--mono);font-weight:700;">&gt;</span> Pair with <strong>Claude</strong> and <strong>Codex</strong> for architecture, refactors, and code review.</li>
-          <li style="padding-left:22px;position:relative;margin:7px 0;"><span style="position:absolute;left:0;color:var(--green);font-family:var(--mono);font-weight:700;">&gt;</span> Use <strong>Cursor</strong> as a primary editor for AI-assisted, in-context development.</li>
-          <li style="padding-left:22px;position:relative;margin:7px 0;"><span style="position:absolute;left:0;color:var(--green);font-family:var(--mono);font-weight:700;">&gt;</span> Build repeatable AI workflows &mdash; scaffolding, test generation, and docs &mdash; into the team's process.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ OPEN SOURCE ============ -->
-  <section id="opensource">
-    <div class="sec-head">
-      <h2>Open Source</h2>
-      <span class="rule"></span>
-      <span class="idx">[04]</span>
-    </div>
-    <a class="repo featured" href="https://storybook.js.org/docs/get-started/frameworks/angular" target="_blank" rel="noopener">
-      <div class="repo-top">
-        <span class="repo-name">@storybook/angular</span>
-        <span class="stars featured-badge">★ initial developer</span>
-      </div>
-      <p>Initial developer of Storybook for Angular (v1) &mdash; brought the industry-standard UI component workshop to the Angular ecosystem. Storybook is used by teams at scale across the web platform.</p>
-      <div class="lang">Angular · TypeScript · Open Source</div>
-    </a>
-
-    <div class="repos">
-      <a class="repo" href="https://github.com/alterx/gundb-react-hooks" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line);">
-        <div class="repo-top"><span class="repo-name">gundb-react-hooks</span><span class="stars">★ 24</span></div>
-        <p>A set of React hooks that wrap around GunDB core functionality.</p>
-        <div class="lang">TypeScript</div>
-      </a>
-      <a class="repo" href="https://github.com/alterx/gun-react-todoapp" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line);">
-        <div class="repo-top"><span class="repo-name">gun-react-todoapp</span><span class="stars">★ 19</span></div>
-        <p>GunDB + React TODO MVC app with private, real-time collaboration.</p>
-        <div class="lang">JavaScript</div>
-      </a>
-      <a class="repo" href="https://github.com/alterx/sailsjs-nodewebkit" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line);">
-        <div class="repo-top"><span class="repo-name">sailsjs-nodewebkit</span><span class="stars">★ 13</span></div>
-        <p>A node-webkit &amp; Sails.js demo app.</p>
-        <div class="lang">JavaScript</div>
-      </a>
-      <a class="repo" href="https://github.com/alterx/gundb-expo-sqlite-adapter" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line);">
-        <div class="repo-top"><span class="repo-name">gundb-expo-sqlite-adapter</span><span class="stars">★ 9</span></div>
-        <p>Adapter implementing the RAD interface, writing to SQLite (expo-sqlite).</p>
-        <div class="lang">TypeScript</div>
-      </a>
-      <a class="repo" href="https://github.com/alterx/gundb-react-auth" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line);">
-        <div class="repo-top"><span class="repo-name">gundb-react-auth</span><span class="stars">★ 5</span></div>
-        <p>A set of providers for initializing GunDB Auth.</p>
-        <div class="lang">TypeScript</div>
-      </a>
-      <a class="repo" href="https://github.com/alterx/b64.space" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line);">
-        <div class="repo-top"><span class="repo-name">b64.space</span><span class="stars">★ 3</span></div>
-        <p>Experimental peer-to-peer, Twitter-like microblogging platform.</p>
-        <div class="lang">TypeScript</div>
-      </a>
-    </div>
-    <p style="font-family:var(--mono);font-size:13px;color:var(--fg-faint);margin-top:16px;">
-      &rarr; more at <a href="https://github.com/alterx" target="_blank" rel="noopener">github.com/alterx</a>
-    </p>
-  </section>
-
-  <!-- ============ TALKS & TEACHING ============ -->
-  <section id="talks">
-    <div class="sec-head">
-      <h2>Talks &amp; Teaching</h2>
-      <span class="rule"></span>
-      <span class="idx">[05]</span>
-    </div>
-    <div class="talks">
-      <div class="talk">
-        <span class="kind">talk</span>
-        <span class="t-title">Composing elegant web applications with React and Ramda</span>
-        <span class="t-meta">Frontend Day Costa Rica · 2016</span>
-      </div>
-      <div class="talk">
-        <span class="kind">course</span>
-        <span class="t-title">Advanced JavaScript</span>
-        <span class="t-meta">BrainStation · 2016</span>
-      </div>
-      <div class="talk">
-        <span class="kind">workshop</span>
-        <span class="t-title">Angular 2: From Framework to Platform</span>
-        <span class="t-meta">BrainStation · 2016</span>
-      </div>
-      <div class="talk">
-        <span class="kind">workshop</span>
-        <span class="t-title">Angular 2: A Framework with Class</span>
-        <span class="t-meta">BrainStation · 2015</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EDUCATION ============ -->
-  <section id="education">
-    <div class="sec-head">
-      <h2>Education</h2>
-      <span class="rule"></span>
-      <span class="idx">[06]</span>
-    </div>
-    <div class="stack">
-      <div class="edu">
-        <div>
-          <span class="deg">Bachelor's degree, Computer Software Engineering</span> — <span class="school">Universidad Nacional de Costa Rica</span>
-        </div>
-        <span class="yr">2008 — 2011</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
-  <footer>
-    <span>$ built with html + css · no frameworks · hosted on github pages</span>
-    <span>© <span id="yr">2026</span> Carlos Vega</span>
-  </footer>
-
-</div>
-
-<script>
-  // Small touch: type-out the role line for effect
-  (function () {
-    var el = document.querySelector('.role');
-    if (!el) return;
-    var cursor = el.querySelector('.cursor');
-    var full = el.childNodes[0].nodeValue.trim();
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return;
-    el.childNodes[0].nodeValue = '';
-    var i = 0;
-    (function type() {
-      if (i <= full.length) {
-        el.childNodes[0].nodeValue = full.slice(0, i++);
-        setTimeout(type, 45);
+      /* ===== Sublime "Monokai" — classic dark ===== */
+      :root,
+      :root[data-theme='dark'] {
+        --bg: #272822;
+        --bg-panel: #2c2d26;
+        --bg-panel2: #32332b;
+        --grid: rgba(166, 226, 46, 0.045);
+        --fg: #f8f8f2;
+        --fg-dim: #b3af9a;
+        --fg-faint: #75715e;
+        --green: #a6e22e;
+        --green-dim: #79a018;
+        --amber: #fd971f;
+        --amber-dim: #b96f16;
+        --cyan: #66d9ef;
+        --magenta: #f92672;
+        --line: rgba(166, 226, 46, 0.16);
+        --line-soft: rgba(166, 226, 46, 0.08);
+        --scan: rgba(0, 0, 0, 0.16);
+        --glow: rgba(166, 226, 46, 0.06);
+        --accent-glow: rgba(166, 226, 46, 0.25);
+        --name-glow: rgba(166, 226, 46, 0.25);
+        --sel-bg: #a6e22e;
+        --sel-fg: #1b1c17;
+        --heading: #eafff0;
+        --shadow: 0 0 0 1px var(--line), 0 24px 60px -30px rgba(0, 0, 0, 0.6);
+        color-scheme: dark;
       }
-    })();
-  })();
 
-  // Theme toggle (Sublime dark / light), persisted
-  (function () {
-    var root = document.documentElement;
-    var btn = document.getElementById('themeBtn');
-    var label = document.getElementById('themeLabel');
-    function sync() {
-      var t = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-      if (label) label.textContent = t;
-    }
-    sync();
-    if (btn) btn.addEventListener('click', function () {
-      var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('cv-theme', next); } catch (e) {}
-      sync();
-    });
+      /* ===== Sublime — classic light ===== */
+      :root[data-theme='light'] {
+        --bg: #fbfbf3;
+        --bg-panel: #ffffff;
+        --bg-panel2: #f4f4ea;
+        --grid: rgba(0, 0, 0, 0.035);
+        --fg: #2b2a22;
+        --fg-dim: #6c695a;
+        --fg-faint: #a29e8c;
+        --green: #5f9a00;
+        --green-dim: #4a7800;
+        --amber: #c2740a;
+        --amber-dim: #955905;
+        --cyan: #1b7f9e;
+        --magenta: #d01b60;
+        --line: rgba(0, 0, 0, 0.12);
+        --line-soft: rgba(0, 0, 0, 0.06);
+        --scan: rgba(0, 0, 0, 0.02);
+        --glow: rgba(95, 154, 0, 0.05);
+        --accent-glow: rgba(95, 154, 0, 0.18);
+        --name-glow: rgba(95, 154, 0, 0.1);
+        --sel-bg: #ffe08a;
+        --sel-fg: #2b2a22;
+        --heading: #1b1a12;
+        --shadow: 0 1px 0 1px rgba(0, 0, 0, 0.05),
+          0 24px 50px -30px rgba(0, 0, 0, 0.28);
+        color-scheme: light;
+      }
 
-    // Download PDF: force the ink-friendly light theme for the print, then restore
-    var pdf = document.getElementById('pdfBtn');
-    var prev = null;
-    window.addEventListener('beforeprint', function () {
-      prev = root.getAttribute('data-theme');
-      root.setAttribute('data-theme', 'light');
-    });
-    window.addEventListener('afterprint', function () {
-      if (prev) { root.setAttribute('data-theme', prev); prev = null; sync(); }
-    });
-    if (pdf) pdf.addEventListener('click', function () { window.print(); });
-  })();
-</script>
-</body>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--sans);
+        font-size: 17px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* Background: grid + scanlines + vignette */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+      }
+      body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 0) 2px,
+            var(--scan) 3px,
+            rgba(0, 0, 0, 0) 4px
+          ),
+          radial-gradient(ellipse at 50% 0%, var(--glow), transparent 60%);
+        pointer-events: none;
+        mix-blend-mode: multiply;
+        z-index: 1;
+      }
+
+      .wrap {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 48px 24px 96px;
+      }
+
+      a {
+        color: var(--cyan);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--line);
+      }
+      a:hover {
+        color: var(--green);
+        border-bottom-color: var(--green);
+      }
+
+      /* ---------- Terminal window ---------- */
+      .terminal {
+        background: linear-gradient(180deg, var(--bg-panel), var(--bg));
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        margin-bottom: 40px;
+      }
+      .term-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        background: #06090620;
+        border-bottom: 1px solid var(--line-soft);
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--fg-dim);
+      }
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      .dot.r {
+        background: #ff5f56;
+        box-shadow: 0 0 8px #ff5f5680;
+      }
+      .dot.y {
+        background: var(--amber);
+        box-shadow: 0 0 8px var(--amber);
+      }
+      .dot.g {
+        background: var(--green);
+        box-shadow: 0 0 8px var(--green);
+      }
+      .term-title {
+        margin-left: 10px;
+        opacity: 0.7;
+      }
+      .term-body {
+        padding: 26px 26px 30px;
+        font-family: var(--mono);
+        font-size: 15px;
+      }
+      .prompt {
+        color: var(--green);
+      }
+      .prompt::before {
+        content: 'carlos@matrix:~$ ';
+        color: var(--green-dim);
+      }
+      .term-out {
+        color: var(--fg-dim);
+        margin: 4px 0 18px;
+      }
+
+      /* Name + title */
+      .name {
+        font-family: var(--sans);
+        font-weight: 700;
+        font-size: clamp(34px, 7vw, 58px);
+        line-height: 1.05;
+        margin: 8px 0 4px;
+        color: var(--heading);
+        letter-spacing: -0.5px;
+        text-shadow: 0 0 24px var(--name-glow);
+      }
+      .role {
+        font-family: var(--mono);
+        color: var(--amber);
+        font-size: clamp(15px, 2.6vw, 20px);
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+      .role .cursor {
+        display: inline-block;
+        width: 10px;
+        height: 1.05em;
+        background: var(--amber);
+        margin-left: 4px;
+        vertical-align: -2px;
+        animation: blink 1.05s steps(1) infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .tagline {
+        color: var(--fg);
+        max-width: 62ch;
+        margin: 0 0 22px;
+      }
+
+      /* Contact row */
+      .contacts {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 12px;
+        font-family: var(--mono);
+        font-size: 13px;
+      }
+      .contacts li {
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 6px 12px;
+        background: var(--line-soft);
+      }
+      .contacts .k {
+        color: var(--fg-faint);
+      }
+
+      /* ---------- Sections ---------- */
+      section {
+        margin: 46px 0;
+        scroll-margin-top: 24px;
+      }
+      .sec-head {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        font-family: var(--mono);
+        margin-bottom: 24px;
+      }
+      .sec-head h2 {
+        margin: 0;
+        font-size: 20px;
+        color: var(--green);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .sec-head h2::before {
+        content: '// ';
+        color: var(--fg-faint);
+      }
+      .sec-head .rule {
+        flex: 1;
+        height: 1px;
+        background: repeating-linear-gradient(
+          90deg,
+          var(--line) 0 6px,
+          transparent 6px 12px
+        );
+      }
+      .sec-head .idx {
+        color: var(--fg-faint);
+        font-size: 13px;
+      }
+
+      /* Experience */
+      .job {
+        position: relative;
+        border-left: 2px solid var(--line);
+        padding: 0 0 8px 24px;
+        margin-left: 6px;
+      }
+      .job + .job {
+        margin-top: 30px;
+      }
+      .job::before {
+        content: '';
+        position: absolute;
+        left: -7px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        background: var(--bg);
+        border: 2px solid var(--green);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--green);
+      }
+      .job-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 4px 16px;
+        align-items: baseline;
+      }
+      .job-title {
+        font-weight: 700;
+        font-size: 19px;
+        color: var(--heading);
+      }
+      .job-co {
+        color: var(--cyan);
+        font-weight: 600;
+      }
+      .job-date {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--amber);
+        white-space: nowrap;
+        letter-spacing: 0.5px;
+      }
+      .job-meta {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--fg-dim);
+        margin: 2px 0 10px;
+      }
+      .job ul {
+        margin: 8px 0 0;
+        padding-left: 0;
+        list-style: none;
+      }
+      .job li {
+        position: relative;
+        padding-left: 22px;
+        margin: 7px 0;
+        color: var(--fg);
+      }
+      .job li::before {
+        content: '>';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--green);
+        font-family: var(--mono);
+        font-weight: 700;
+      }
+      .job.compact {
+        padding-bottom: 0;
+      }
+      .job.compact .job-title {
+        font-size: 17px;
+      }
+
+      /* Client project sub-cards nested under a role */
+      .clients-label {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--fg-faint);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 16px 0 10px;
+      }
+      .clients {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+      }
+      .client {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--bg-panel2);
+        padding: 13px 15px;
+      }
+      .client-top {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+      .client-badge {
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 2px 7px;
+        border-radius: 3px;
+        color: #041007;
+        background: var(--amber);
+      }
+      .client h4 {
+        margin: 0;
+        font-size: 15px;
+        color: var(--heading);
+        font-weight: 700;
+      }
+      .client p {
+        margin: 0;
+        font-size: 13.5px;
+        color: var(--fg-dim);
+        line-height: 1.5;
+      }
+      .client .stackline {
+        font-family: var(--mono);
+        font-size: 11.5px;
+        color: var(--green-dim);
+        margin-top: 7px;
+      }
+      .client a {
+        font-size: 12px;
+      }
+
+      /* Open-source repo cards */
+      .repos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 14px;
+      }
+      .repo {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--bg-panel2);
+        padding: 15px 17px;
+        display: flex;
+        flex-direction: column;
+        transition: border-color 0.15s, box-shadow 0.15s;
+      }
+      .repo:hover {
+        border-color: var(--green);
+        box-shadow: 0 0 18px var(--accent-glow);
+      }
+      .repo-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .repo-name {
+        font-family: var(--mono);
+        font-weight: 700;
+        font-size: 15px;
+        color: var(--cyan);
+      }
+      .repo-name::before {
+        content: '❯ ';
+        color: var(--fg-faint);
+      }
+      .repo:hover .repo-name {
+        color: var(--green);
+      }
+      .repo .stars {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--amber);
+        white-space: nowrap;
+      }
+      .repo p {
+        margin: 0;
+        font-size: 13.5px;
+        color: var(--fg-dim);
+        line-height: 1.5;
+        flex: 1;
+      }
+      .repo .lang {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--fg-faint);
+        margin-top: 10px;
+        letter-spacing: 0.5px;
+      }
+
+      .repo.featured {
+        border-color: var(--amber-dim);
+        background: radial-gradient(
+            120% 140% at 0% 0%,
+            rgba(255, 176, 0, 0.1),
+            transparent 55%
+          ),
+          var(--bg-panel2);
+        margin-bottom: 14px;
+        box-shadow: 0 0 24px -6px rgba(255, 176, 0, 0.25);
+      }
+      .repo.featured:hover {
+        border-color: var(--amber);
+        box-shadow: 0 0 28px -4px rgba(255, 176, 0, 0.4);
+      }
+      .repo.featured .repo-name {
+        color: var(--amber);
+        font-size: 17px;
+      }
+      .repo.featured:hover .repo-name {
+        color: var(--amber);
+      }
+      .repo.featured p {
+        color: var(--fg);
+      }
+      .repo.featured .featured-badge {
+        color: #041007;
+        background: var(--amber);
+        padding: 3px 9px;
+        border-radius: 3px;
+        font-weight: 700;
+      }
+
+      /* Talks & teaching list */
+      .talks {
+        display: grid;
+        gap: 10px;
+      }
+      .talk {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px 14px;
+        border: 1px solid var(--line-soft);
+        border-left: 3px solid var(--amber);
+        border-radius: 0 6px 6px 0;
+        padding: 12px 16px;
+        background: var(--bg-panel);
+      }
+      .talk .kind {
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--amber);
+        border: 1px solid var(--amber-dim);
+        padding: 2px 7px;
+        border-radius: 3px;
+      }
+      .talk .t-title {
+        font-weight: 600;
+        color: var(--heading);
+      }
+      .talk .t-meta {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--fg-dim);
+        margin-left: auto;
+      }
+
+      /* Floating toolbar: theme toggle + PDF */
+      .toolbar {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 30;
+        display: flex;
+        gap: 8px;
+      }
+      .tbtn {
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 12px;
+        cursor: pointer;
+        color: var(--fg);
+        background: var(--bg-panel);
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        box-shadow: var(--shadow);
+        transition: color 0.15s, border-color 0.15s, box-shadow 0.15s;
+      }
+      .tbtn:hover {
+        border-color: var(--green);
+        color: var(--green);
+        box-shadow: 0 0 14px var(--accent-glow);
+      }
+      .tbtn .ico {
+        font-size: 14px;
+        line-height: 1;
+      }
+      @media (max-width: 560px) {
+        .toolbar {
+          top: 10px;
+          right: 10px;
+        }
+        .tbtn {
+          padding: 7px 9px;
+        }
+      }
+
+      /* Skills grid */
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+      }
+      .skill-card {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--bg-panel2);
+        padding: 16px 18px;
+      }
+      .skill-card h3 {
+        margin: 0 0 12px;
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--amber);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tag {
+        font-family: var(--mono);
+        font-size: 12.5px;
+        padding: 4px 10px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        color: var(--fg);
+        background: var(--line-soft);
+        transition: all 0.15s;
+      }
+      .tag:hover {
+        border-color: var(--green);
+        color: var(--green);
+        box-shadow: 0 0 12px var(--accent-glow);
+      }
+
+      /* Education / two-col compact */
+      .stack {
+        display: grid;
+        gap: 14px;
+      }
+      .edu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 4px 16px;
+        border: 1px solid var(--line-soft);
+        border-radius: 6px;
+        padding: 14px 18px;
+        background: var(--bg-panel);
+      }
+      .edu .deg {
+        font-weight: 600;
+        color: var(--heading);
+      }
+      .edu .school {
+        color: var(--cyan);
+      }
+      .edu .yr {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--amber);
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px dashed var(--line);
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--fg-faint);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      ::selection {
+        background: var(--sel-bg);
+        color: var(--sel-fg);
+      }
+
+      /* Print */
+      /* ============================================================
+     PRINT / PDF — compact, ATS-friendly, ~2 pages, plain text
+     ============================================================ */
+      @page {
+        size: A4;
+        margin: 12mm 13mm;
+      }
+
+      @media print {
+        /* Neutral, ink-friendly base */
+        html,
+        body {
+          background: #fff !important;
+          color: #111 !important;
+        }
+        body {
+          font-size: 9pt;
+          line-height: 1.3;
+        }
+        body::before,
+        body::after {
+          display: none !important;
+        }
+        .wrap {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+        }
+        * {
+          box-shadow: none !important;
+          text-shadow: none !important;
+        }
+
+        /* Strip terminal / decorative chrome */
+        .toolbar,
+        .term-bar,
+        .role .cursor,
+        .prompt {
+          display: none !important;
+        }
+        .term-out {
+          display: none !important;
+        } /* hero "Loading profile..." */
+        #ai .term-out {
+          display: block !important;
+          color: #333 !important;
+        } /* keep AI blurb */
+        .sec-head .idx {
+          display: none !important;
+        }
+        .sec-head h2::before {
+          content: '' !important;
+        }
+        .repo-name::before {
+          content: '' !important;
+        }
+        .sec-head .rule {
+          background: none !important;
+          border-bottom: 1px solid #bbb;
+          height: 0;
+        }
+
+        /* Terminals become plain blocks */
+        .terminal {
+          border: none !important;
+          border-radius: 0 !important;
+          background: none !important;
+          margin: 0 0 10px !important;
+        }
+        .term-body {
+          padding: 0 !important;
+          font-family: var(--sans);
+          font-size: 10pt;
+        }
+
+        /* Typography — no vw clamps on paper */
+        .name {
+          font-size: 19pt !important;
+          color: #000 !important;
+          margin: 0 0 1px;
+        }
+        .role {
+          font-size: 10pt !important;
+          color: #b45309 !important;
+          margin-bottom: 5px;
+        }
+        .tagline {
+          font-size: 8.7pt !important;
+          color: #222 !important;
+          max-width: none;
+          margin-bottom: 5px;
+        }
+        .sec-head {
+          margin-bottom: 5px;
+        }
+        .sec-head h2 {
+          font-family: var(--sans);
+          font-size: 12pt;
+          color: #15803d !important;
+          border-bottom: 1.5px solid #15803d;
+          padding-bottom: 2px;
+          letter-spacing: 0.3px;
+        }
+        a {
+          color: #0b5cad !important;
+          border: none !important;
+        }
+
+        /* Contacts as a compact single line */
+        .contacts {
+          gap: 4px 10px;
+          font-size: 8.5pt;
+        }
+        .contacts li {
+          border: none !important;
+          background: none !important;
+          padding: 0;
+        }
+        .contacts li::after {
+          content: ' ·';
+          color: #999;
+        }
+        .contacts li:last-child::after {
+          content: '';
+        }
+
+        /* Layout density */
+        section {
+          margin: 9px 0 !important;
+        }
+        .job {
+          border-left: 1px solid #ccc !important;
+          padding: 0 0 0 12px;
+        }
+        .job::before {
+          width: 7px;
+          height: 7px;
+          left: -4px;
+          border-width: 1.5px;
+          border-color: #15803d !important;
+          box-shadow: none !important;
+        }
+        .job + .job {
+          margin-top: 7px !important;
+        }
+        .job-title,
+        .edu .deg,
+        .client h4,
+        .repo-name,
+        .talk .t-title {
+          color: #000 !important;
+        }
+        .job-title {
+          font-size: 10.5pt;
+        }
+        .job-co {
+          color: #15803d !important;
+        }
+        .job-date,
+        .edu .yr {
+          color: #b45309 !important;
+        }
+        .job-meta {
+          font-family: var(--sans);
+          font-size: 8.5pt;
+          color: #555 !important;
+          margin: 1px 0 5px;
+        }
+        .job li {
+          color: #111 !important;
+          margin: 2px 0;
+          padding-left: 12px;
+        }
+        .job li::before {
+          content: '•' !important;
+          color: #15803d !important;
+          font-family: var(--sans);
+        }
+
+        /* Single column everywhere: reliable ATS reading order + no mid-card page cuts */
+        .clients,
+        .repos,
+        .skill-grid,
+        .talks,
+        .stack {
+          display: block !important;
+          gap: 0 !important;
+        }
+        .job,
+        .job li {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+        .sec-head {
+          break-after: avoid;
+          page-break-after: avoid;
+        }
+
+        /* Skills as compact "Label:  a  b  c" rows — never split, easy to parse */
+        .skill-card {
+          break-inside: avoid;
+          page-break-inside: avoid;
+          display: flex;
+          align-items: baseline;
+          gap: 10px;
+          border: none !important;
+          background: none !important;
+          padding: 2px 0 !important;
+        }
+        .skill-card h3 {
+          margin: 0 !important;
+          min-width: 120px;
+          white-space: nowrap;
+        }
+        .skill-card .tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px 6px;
+        }
+
+        /* Client / repo / talk / edu: full-width stacked cards, kept whole on a page */
+        .client,
+        .repo,
+        .edu,
+        .talk {
+          break-inside: avoid;
+          page-break-inside: avoid;
+          border: 1px solid #ddd !important;
+          background: #fafafa !important;
+          padding: 6px 9px !important;
+          margin: 0 0 6px !important;
+        }
+        .clients-label {
+          margin: 7px 0 4px !important;
+        }
+        .tags {
+          gap: 5px;
+        }
+        #ai .job li {
+          margin: 2px 0;
+        }
+        /* Open-source repos: compact single-line entries so the page stays <= 2pp */
+        .repos .repo {
+          display: block !important;
+          border: none !important;
+          background: none !important;
+          padding: 1px 0 !important;
+          margin: 0 !important;
+        }
+        .repos .repo-top {
+          display: inline !important;
+        }
+        .repos .repo .stars {
+          margin-left: 4px;
+        }
+        .repos .repo p {
+          display: inline !important;
+          margin: 0 !important;
+        }
+        .repos .repo p::before {
+          content: ' — ';
+          color: #666;
+        }
+        .repos .repo .lang {
+          display: inline !important;
+          margin: 0 0 0 5px !important;
+        }
+        .repos .repo .lang::before {
+          content: '· ';
+        }
+        .repo.featured {
+          margin-bottom: 6px !important;
+        }
+        footer {
+          margin-top: 10px !important;
+        }
+        .client p,
+        .repo p,
+        .client .stackline,
+        .repo .lang,
+        .talk .t-meta {
+          color: #444 !important;
+        }
+        .skill-card h3,
+        .client-badge,
+        .talk .kind {
+          color: #b45309 !important;
+        }
+        .client-badge,
+        .featured-badge {
+          background: none !important;
+          color: #b45309 !important;
+          border: 1px solid #d9a066;
+          padding: 1px 5px;
+        }
+        .repo.featured {
+          background: #fffaf0 !important;
+          border-color: #d9a066 !important;
+        }
+        .repo.featured .repo-name {
+          color: #000 !important;
+        }
+        .tag {
+          border: 1px solid #ddd !important;
+          background: #fff !important;
+          color: #222 !important;
+          padding: 2px 7px;
+          font-size: 8.5pt;
+        }
+        .stars {
+          color: #b45309 !important;
+        }
+
+        footer {
+          border-top: 1px solid #ccc;
+          color: #888;
+          font-size: 8pt;
+          margin-top: 16px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        body {
+          font-size: 16px;
+        }
+        .term-body {
+          padding: 20px 16px 24px;
+        }
+        .wrap {
+          padding: 28px 14px 72px;
+        }
+      }
+    </style>
+    <script>
+      // Set theme before first paint to avoid a flash
+      (function () {
+        try {
+          var t = localStorage.getItem('cv-theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <!-- ============ TOOLBAR ============ -->
+      <div class="toolbar" role="toolbar" aria-label="Page controls">
+        <button
+          id="themeBtn"
+          class="tbtn"
+          type="button"
+          aria-label="Toggle theme"
+          title="Toggle light / dark theme"
+        >
+          <span class="ico" id="themeIco">◐</span
+          ><span id="themeLabel">dark</span>
+        </button>
+        <button
+          id="pdfBtn"
+          class="tbtn"
+          type="button"
+          aria-label="Download as PDF"
+          title="Download / print as PDF"
+        >
+          <span class="ico">⤓</span>PDF
+        </button>
+      </div>
+
+      <!-- ============ HERO / TERMINAL ============ -->
+      <div class="terminal">
+        <div class="term-bar">
+          <span class="dot r"></span><span class="dot y"></span
+          ><span class="dot g"></span>
+          <span class="term-title">carlos_vega — resume.sh — 80x24</span>
+        </div>
+        <div class="term-body">
+          <div class="prompt">whoami</div>
+          <div class="term-out">Loading profile...</div>
+
+          <h1 class="name">Carlos Vega</h1>
+          <div class="role">
+            Senior Software Engineer &amp; Tech Lead<span class="cursor"></span>
+          </div>
+
+          <p class="tagline">
+            15+ years of software engineering &mdash; from requirement analysis
+            and project scheduling to architectural design and delivery. I lead
+            teams through every phase of the development cycle to ship quality
+            products that meet and exceed expectations. A well-versed front-end
+            web engineer &mdash; React, Next.js, Angular &mdash; building
+            cross-platform mobile in React Native and cloud-native platforms on
+            AWS, with AI-augmented workflows woven through the whole lifecycle.
+          </p>
+
+          <ul class="contacts">
+            <li><span class="k">loc:</span> Costa Rica · Remote</li>
+            <li>
+              <span class="k">mail:</span>
+              <a href="mailto:clmvega@gmail.com">clmvega@gmail.com</a>
+            </li>
+            <li>
+              <span class="k">in:</span>
+              <a
+                href="https://www.linkedin.com/in/carlosvegar/"
+                target="_blank"
+                rel="noopener"
+                >carlosvegar</a
+              >
+            </li>
+            <li>
+              <span class="k">git:</span>
+              <a href="https://github.com/alterx" target="_blank" rel="noopener"
+                >github.com/alterx</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ============ EXPERIENCE ============ -->
+      <section id="experience">
+        <div class="sec-head">
+          <h2>Experience</h2>
+          <span class="rule"></span>
+          <span class="idx">[01]</span>
+        </div>
+
+        <div class="job">
+          <div class="job-top">
+            <div>
+              <span class="job-title">Senior Software Developer</span> ·
+              <span class="job-co">18Techs</span>
+            </div>
+            <span class="job-date">SEP 2016 — PRESENT</span>
+          </div>
+          <div class="job-meta">
+            Freelance / Contract · Remote · React Native · React Query · AWS ·
+            TypeScript
+          </div>
+          <ul>
+            <li>
+              Deliver end-to-end product engineering for a portfolio of clients
+              &mdash; mobile front ends, cloud back ends, and everything in
+              between.
+            </li>
+            <li>
+              Standardized the mobile stack on
+              <strong>React Native</strong> with
+              <strong>React Query</strong> for server-state caching, optimistic
+              updates, and resilient offline behavior.
+            </li>
+            <li>
+              Built and operated services on <strong>AWS</strong>, owning
+              deployment, reliability, and observability.
+            </li>
+            <li>
+              Embedded AI tooling (Claude, Codex, Cursor) into day-to-day
+              development to accelerate delivery across teams.
+            </li>
+          </ul>
+
+          <div class="clients-label">// Selected client work</div>
+          <div class="clients">
+            <div class="client">
+              <div class="client-top">
+                <span class="client-badge">social</span>
+                <h4>mUnity</h4>
+              </div>
+              <p>
+                Cross-platform community &amp; social media app on iOS and
+                Android &mdash; media capture/upload, reactions, activity feeds,
+                i18n, and durable upload queues that survive app kills.
+              </p>
+              <div class="stackline">React Native · React Query</div>
+              <div style="margin-top: 8px">
+                <a href="https://www.munity.us/" target="_blank" rel="noopener"
+                  >munity.us ↗</a
+                >
+              </div>
+            </div>
+            <div class="client">
+              <div class="client-top">
+                <span class="client-badge">ad-tech</span>
+                <h4>QUAD</h4>
+              </div>
+              <p>
+                Advertising platform for a Stockholm-based ad-tech company
+                &mdash; designed and scaled cloud services powering ad delivery
+                and reporting.
+              </p>
+              <div class="stackline">AWS · Cloud services</div>
+              <div style="margin-top: 8px">
+                <a href="https://quad.se/" target="_blank" rel="noopener"
+                  >quad.se ↗</a
+                >
+              </div>
+            </div>
+            <div class="client">
+              <div class="client-top">
+                <span class="client-badge">mobility</span>
+                <h4>Envoy</h4>
+              </div>
+              <p>
+                EV car-sharing app (&ldquo;Mobility as an Amenity&rdquo;)
+                &mdash; app-based reservations, keyless vehicle access, and
+                property-scoped fleet flows.
+              </p>
+              <div class="stackline">React Native · Mobile</div>
+              <div style="margin-top: 8px">
+                <a
+                  href="https://www.envoythere.com/"
+                  target="_blank"
+                  rel="noopener"
+                  >envoythere.com ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="job compact">
+          <div class="job-top">
+            <div>
+              <span class="job-title">Front-End Tech Lead</span> ·
+              <span class="job-co">Informatech Costa Rica</span>
+            </div>
+            <span class="job-date">JAN 2016 — SEP 2016</span>
+          </div>
+          <div class="job-meta">Costa Rica</div>
+          <ul>
+            <li>Led front-end development as tech lead.</li>
+            <li>
+              Re-platformed <strong>Encore Capital Group</strong>'s
+              consumer-facing sites.
+            </li>
+          </ul>
+        </div>
+
+        <div class="job compact">
+          <div class="job-top">
+            <div>
+              <span class="job-title">Senior Software Engineer</span> ·
+              <span class="job-co">Konrad Group</span>
+            </div>
+            <span class="job-date">MAR 2014 — JAN 2016</span>
+          </div>
+          <div class="job-meta">San Pedro, San José, Costa Rica</div>
+          <ul>
+            <li>Delivered solutions for <strong>Deloitte Digital</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="job compact">
+          <div class="job-top">
+            <div>
+              <span class="job-title">Senior Analyst</span> ·
+              <span class="job-co">Accenture</span>
+            </div>
+            <span class="job-date">NOV 2012 — MAR 2014</span>
+          </div>
+          <div class="job-meta">Costa Rica</div>
+          <ul>
+            <li>
+              Delivered solutions to <strong>SAY Media</strong>,
+              <strong>DuPont</strong>, <strong>Specialized</strong>, and
+              <strong>Samtec Interconnect</strong>.
+            </li>
+          </ul>
+        </div>
+
+        <div class="job compact">
+          <div class="job-top">
+            <div>
+              <span class="job-title">Web Developer &amp; Designer</span> ·
+              <span class="job-co">avVenta Worldwide</span>
+            </div>
+            <span class="job-date">FEB 2012 — MAR 2014</span>
+          </div>
+          <div class="job-meta">
+            Front-end development &mdash; CSS3 / HTML5 / JavaScript web pages
+            &amp; web apps
+          </div>
+        </div>
+
+        <div class="job compact">
+          <div class="job-top">
+            <div>
+              <span class="job-title">Web Developer</span> ·
+              <span class="job-co">Samtec Inc</span>
+              <span
+                style="
+                  color: var(--fg-faint);
+                  font-family: var(--mono);
+                  font-size: 12px;
+                "
+                >(Intern)</span
+              >
+            </div>
+            <span class="job-date">AUG 2011 — DEC 2011</span>
+          </div>
+          <div class="job-meta">Costa Rica</div>
+        </div>
+      </section>
+
+      <!-- ============ SKILLS ============ -->
+      <section id="skills">
+        <div class="sec-head">
+          <h2>Skills</h2>
+          <span class="rule"></span>
+          <span class="idx">[02]</span>
+        </div>
+        <div class="skill-grid">
+          <div class="skill-card">
+            <h3>Languages</h3>
+            <div class="tags">
+              <span class="tag">TypeScript</span
+              ><span class="tag">JavaScript</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Frontend Web</h3>
+            <div class="tags">
+              <span class="tag">React.js</span><span class="tag">Next.js</span>
+              <span class="tag">Angular</span><span class="tag">HTML5</span
+              ><span class="tag">CSS3</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Mobile</h3>
+            <div class="tags">
+              <span class="tag">React Native</span
+              ><span class="tag">React Query</span> <span class="tag">Expo</span
+              ><span class="tag">Redux Toolkit</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Backend / Cloud</h3>
+            <div class="tags">
+              <span class="tag">AWS</span><span class="tag">Node.js</span>
+              <span class="tag">REST / GraphQL</span
+              ><span class="tag">CI/CD</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>AI-Augmented Dev</h3>
+            <div class="tags">
+              <span class="tag">Claude</span><span class="tag">Codex</span>
+              <span class="tag">Cursor</span
+              ><span class="tag">LLM workflows</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Practices</h3>
+            <div class="tags">
+              <span class="tag">Offline-first</span
+              ><span class="tag">System Design</span>
+              <span class="tag">i18n</span><span class="tag">Testing</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ AI IN THE LOOP ============ -->
+      <section id="ai">
+        <div class="sec-head">
+          <h2>AI in the Loop</h2>
+          <span class="rule"></span>
+          <span class="idx">[03]</span>
+        </div>
+        <div class="terminal">
+          <div class="term-bar">
+            <span class="dot r"></span><span class="dot y"></span
+            ><span class="dot g"></span>
+            <span class="term-title">ai_workflow.log</span>
+          </div>
+          <div class="term-body">
+            <div class="prompt">cat ai_workflow.log</div>
+            <div class="term-out">
+              Integrating AI across the development lifecycle &mdash; not as a
+              novelty,<br />
+              but as day-to-day leverage for shipping faster with fewer defects.
+            </div>
+            <ul
+              class="job"
+              style="border: none; padding-left: 0; margin: 0; list-style: none"
+            >
+              <li style="padding-left: 22px; position: relative; margin: 7px 0">
+                <span
+                  style="
+                    position: absolute;
+                    left: 0;
+                    color: var(--green);
+                    font-family: var(--mono);
+                    font-weight: 700;
+                  "
+                  >&gt;</span
+                >
+                Pair with <strong>Claude</strong> and <strong>Codex</strong> for
+                architecture, refactors, and code review.
+              </li>
+              <li style="padding-left: 22px; position: relative; margin: 7px 0">
+                <span
+                  style="
+                    position: absolute;
+                    left: 0;
+                    color: var(--green);
+                    font-family: var(--mono);
+                    font-weight: 700;
+                  "
+                  >&gt;</span
+                >
+                Use <strong>Cursor</strong> as a primary editor for AI-assisted,
+                in-context development.
+              </li>
+              <li style="padding-left: 22px; position: relative; margin: 7px 0">
+                <span
+                  style="
+                    position: absolute;
+                    left: 0;
+                    color: var(--green);
+                    font-family: var(--mono);
+                    font-weight: 700;
+                  "
+                  >&gt;</span
+                >
+                Build repeatable AI workflows &mdash; scaffolding, test
+                generation, and docs &mdash; into the team's process.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPEN SOURCE ============ -->
+      <section id="opensource">
+        <div class="sec-head">
+          <h2>Open Source</h2>
+          <span class="rule"></span>
+          <span class="idx">[04]</span>
+        </div>
+        <a
+          class="repo featured"
+          href="https://storybook.js.org/docs/get-started/frameworks/angular"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="repo-top">
+            <span class="repo-name">@storybook/angular</span>
+            <span class="stars featured-badge">★ initial developer</span>
+          </div>
+          <p>
+            Initial developer of Storybook for Angular (v1) &mdash; brought the
+            industry-standard UI component workshop to the Angular ecosystem.
+            Storybook is used by teams at scale across the web platform.
+          </p>
+          <div class="lang">Angular · TypeScript · Open Source</div>
+        </a>
+
+        <div class="repos">
+          <a
+            class="repo"
+            href="https://github.com/alterx/gundb-react-hooks"
+            target="_blank"
+            rel="noopener"
+            style="border-bottom: 1px solid var(--line)"
+          >
+            <div class="repo-top">
+              <span class="repo-name">gundb-react-hooks</span
+              ><span class="stars">★ 24</span>
+            </div>
+            <p>
+              A set of React hooks that wrap around GunDB core functionality.
+            </p>
+            <div class="lang">TypeScript</div>
+          </a>
+          <a
+            class="repo"
+            href="https://github.com/alterx/gun-react-todoapp"
+            target="_blank"
+            rel="noopener"
+            style="border-bottom: 1px solid var(--line)"
+          >
+            <div class="repo-top">
+              <span class="repo-name">gun-react-todoapp</span
+              ><span class="stars">★ 19</span>
+            </div>
+            <p>
+              GunDB + React TODO MVC app with private, real-time collaboration.
+            </p>
+            <div class="lang">JavaScript</div>
+          </a>
+          <a
+            class="repo"
+            href="https://github.com/alterx/sailsjs-nodewebkit"
+            target="_blank"
+            rel="noopener"
+            style="border-bottom: 1px solid var(--line)"
+          >
+            <div class="repo-top">
+              <span class="repo-name">sailsjs-nodewebkit</span
+              ><span class="stars">★ 13</span>
+            </div>
+            <p>A node-webkit &amp; Sails.js demo app.</p>
+            <div class="lang">JavaScript</div>
+          </a>
+          <a
+            class="repo"
+            href="https://github.com/alterx/gundb-expo-sqlite-adapter"
+            target="_blank"
+            rel="noopener"
+            style="border-bottom: 1px solid var(--line)"
+          >
+            <div class="repo-top">
+              <span class="repo-name">gundb-expo-sqlite-adapter</span
+              ><span class="stars">★ 9</span>
+            </div>
+            <p>
+              Adapter implementing the RAD interface, writing to SQLite
+              (expo-sqlite).
+            </p>
+            <div class="lang">TypeScript</div>
+          </a>
+          <a
+            class="repo"
+            href="https://github.com/alterx/gundb-react-auth"
+            target="_blank"
+            rel="noopener"
+            style="border-bottom: 1px solid var(--line)"
+          >
+            <div class="repo-top">
+              <span class="repo-name">gundb-react-auth</span
+              ><span class="stars">★ 5</span>
+            </div>
+            <p>A set of providers for initializing GunDB Auth.</p>
+            <div class="lang">TypeScript</div>
+          </a>
+          <a
+            class="repo"
+            href="https://github.com/alterx/b64.space"
+            target="_blank"
+            rel="noopener"
+            style="border-bottom: 1px solid var(--line)"
+          >
+            <div class="repo-top">
+              <span class="repo-name">b64.space</span
+              ><span class="stars">★ 3</span>
+            </div>
+            <p>
+              Experimental peer-to-peer, Twitter-like microblogging platform.
+            </p>
+            <div class="lang">TypeScript</div>
+          </a>
+        </div>
+        <p
+          style="
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--fg-faint);
+            margin-top: 16px;
+          "
+        >
+          &rarr; more at
+          <a href="https://github.com/alterx" target="_blank" rel="noopener"
+            >github.com/alterx</a
+          >
+        </p>
+      </section>
+
+      <!-- ============ TALKS & TEACHING ============ -->
+      <section id="talks">
+        <div class="sec-head">
+          <h2>Talks &amp; Teaching</h2>
+          <span class="rule"></span>
+          <span class="idx">[05]</span>
+        </div>
+        <div class="talks">
+          <div class="talk">
+            <span class="kind">talk</span>
+            <span class="t-title"
+              >Composing elegant web applications with React and Ramda</span
+            >
+            <span class="t-meta">Frontend Day Costa Rica · 2016</span>
+          </div>
+          <div class="talk">
+            <span class="kind">course</span>
+            <span class="t-title">Advanced JavaScript</span>
+            <span class="t-meta">BrainStation · 2016</span>
+          </div>
+          <div class="talk">
+            <span class="kind">workshop</span>
+            <span class="t-title">Angular 2: From Framework to Platform</span>
+            <span class="t-meta">BrainStation · 2016</span>
+          </div>
+          <div class="talk">
+            <span class="kind">workshop</span>
+            <span class="t-title">Angular 2: A Framework with Class</span>
+            <span class="t-meta">BrainStation · 2015</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ EDUCATION ============ -->
+      <section id="education">
+        <div class="sec-head">
+          <h2>Education</h2>
+          <span class="rule"></span>
+          <span class="idx">[06]</span>
+        </div>
+        <div class="stack">
+          <div class="edu">
+            <div>
+              <span class="deg"
+                >Bachelor's degree, Computer Software Engineering</span
+              >
+              — <span class="school">Universidad Nacional de Costa Rica</span>
+            </div>
+            <span class="yr">2008 — 2011</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FOOTER ============ -->
+      <footer>
+        <span
+          >$ built with html + css · no frameworks · hosted on github
+          pages</span
+        >
+        <span>© <span id="yr">2026</span> Carlos Vega</span>
+      </footer>
+    </div>
+
+    <script>
+      // Small touch: type-out the role line for effect
+      (function () {
+        var el = document.querySelector('.role');
+        if (!el) return;
+        var cursor = el.querySelector('.cursor');
+        var full = el.childNodes[0].nodeValue.trim();
+        el.dataset.full = full; // preserved for print / restore
+        var reduce = window.matchMedia(
+          '(prefers-reduced-motion: reduce)'
+        ).matches;
+        if (reduce) return;
+        el.childNodes[0].nodeValue = '';
+        var i = 0;
+        (function type() {
+          if (i <= full.length) {
+            el.childNodes[0].nodeValue = full.slice(0, i++);
+            setTimeout(type, 45);
+          }
+        })();
+      })();
+
+      // Theme toggle (Sublime dark / light), persisted
+      (function () {
+        var root = document.documentElement;
+        var btn = document.getElementById('themeBtn');
+        var label = document.getElementById('themeLabel');
+        function sync() {
+          var t =
+            root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+          if (label) label.textContent = t;
+        }
+        sync();
+        if (btn)
+          btn.addEventListener('click', function () {
+            var next =
+              root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.setAttribute('data-theme', next);
+            try {
+              localStorage.setItem('cv-theme', next);
+            } catch (e) {}
+            sync();
+          });
+
+        // Download PDF: force the ink-friendly light theme for the print, then restore
+        var pdf = document.getElementById('pdfBtn');
+        var prev = null;
+        window.addEventListener('beforeprint', function () {
+          prev = root.getAttribute('data-theme');
+          root.setAttribute('data-theme', 'light');
+          // Ensure the full role text is present even if the type-out is mid-flight
+          var role = document.querySelector('.role');
+          if (role && role.dataset.full) {
+            role.childNodes[0].nodeValue = role.dataset.full;
+          }
+        });
+        window.addEventListener('afterprint', function () {
+          if (prev) {
+            root.setAttribute('data-theme', prev);
+            prev = null;
+            sync();
+          }
+        });
+        if (pdf)
+          pdf.addEventListener('click', function () {
+            window.print();
+          });
+      })();
+    </script>
+  </body>
 </html>
