@@ -1059,6 +1059,15 @@
       <!-- ============ TOOLBAR ============ -->
       <div class="toolbar" role="toolbar" aria-label="Page controls">
         <button
+          id="langBtn"
+          class="tbtn"
+          type="button"
+          aria-label="Switch language"
+          title="Switch language / Cambiar idioma"
+        >
+          <span class="ico">⌘</span><span id="langLabel">EN</span>
+        </button>
+        <button
           id="themeBtn"
           class="tbtn"
           type="button"
@@ -1088,14 +1097,14 @@
         </div>
         <div class="term-body">
           <div class="prompt">whoami</div>
-          <div class="term-out">Loading profile...</div>
+          <div class="term-out" data-i18n="loading">Loading profile...</div>
 
           <h1 class="name">Carlos Vega</h1>
           <div class="role">
             Senior Software Engineer &amp; Tech Lead<span class="cursor"></span>
           </div>
 
-          <p class="tagline">
+          <p class="tagline" data-i18n="summary">
             15+ years of software engineering &mdash; from requirement analysis
             and project scheduling to architectural design and delivery. I lead
             teams through every phase of the development cycle to ship quality
@@ -1106,7 +1115,7 @@
           </p>
 
           <ul class="contacts">
-            <li><span class="k">loc:</span> Costa Rica · Remote</li>
+            <li data-i18n="loc"><span class="k">loc:</span> Costa Rica · Remote</li>
             <li>
               <span class="k">mail:</span>
               <a href="mailto:clmvega@gmail.com">clmvega@gmail.com</a>
@@ -1133,7 +1142,7 @@
       <!-- ============ EXPERIENCE ============ -->
       <section id="experience">
         <div class="sec-head">
-          <h2>Experience</h2>
+          <h2 data-i18n="sec.exp">Experience</h2>
           <span class="rule"></span>
           <span class="idx">[01]</span>
         </div>
@@ -1141,45 +1150,51 @@
         <div class="job">
           <div class="job-top">
             <div>
-              <span class="job-title">Senior Software Developer</span> ·
-              <span class="job-co">18Techs</span>
+              <span class="job-title" data-i18n="j1.title"
+                >Senior Software Developer</span
+              >
+              · <span class="job-co">18Techs</span>
             </div>
-            <span class="job-date">SEP 2016 — PRESENT</span>
+            <span class="job-date" data-i18n="j1.date">SEP 2016 — PRESENT</span>
           </div>
-          <div class="job-meta">
+          <div class="job-meta" data-i18n="j1.meta">
             Freelance / Contract · Remote · React Native · React Query · AWS ·
             TypeScript
           </div>
           <ul>
-            <li>
+            <li data-i18n="j1.b1">
               Deliver end-to-end product engineering for a portfolio of clients
               &mdash; mobile front ends, cloud back ends, and everything in
               between.
             </li>
-            <li>
+            <li data-i18n="j1.b2">
               Standardized the mobile stack on
               <strong>React Native</strong> with
               <strong>React Query</strong> for server-state caching, optimistic
               updates, and resilient offline behavior.
             </li>
-            <li>
+            <li data-i18n="j1.b3">
               Built and operated services on <strong>AWS</strong>, owning
               deployment, reliability, and observability.
             </li>
-            <li>
+            <li data-i18n="j1.b4">
               Embedded AI tooling (Claude, Codex, Cursor) into day-to-day
               development to accelerate delivery across teams.
             </li>
           </ul>
 
-          <div class="clients-label">// Selected client work</div>
+          <div class="clients-label" data-i18n="clients.label">
+            // Selected client work
+          </div>
           <div class="clients">
             <div class="client">
               <div class="client-top">
-                <span class="client-badge">social</span>
+                <span class="client-badge" data-i18n="badge.social"
+                  >social</span
+                >
                 <h4>mUnity</h4>
               </div>
-              <p>
+              <p data-i18n="client.munity">
                 Cross-platform community &amp; social media app on iOS and
                 Android &mdash; media capture/upload, reactions, activity feeds,
                 i18n, and durable upload queues that survive app kills.
@@ -1193,10 +1208,12 @@
             </div>
             <div class="client">
               <div class="client-top">
-                <span class="client-badge">ad-tech</span>
+                <span class="client-badge" data-i18n="badge.adtech"
+                  >ad-tech</span
+                >
                 <h4>QUAD</h4>
               </div>
-              <p>
+              <p data-i18n="client.quad">
                 Advertising platform for a Stockholm-based ad-tech company
                 &mdash; designed and scaled cloud services powering ad delivery
                 and reporting.
@@ -1210,10 +1227,12 @@
             </div>
             <div class="client">
               <div class="client-top">
-                <span class="client-badge">mobility</span>
+                <span class="client-badge" data-i18n="badge.mobility"
+                  >mobility</span
+                >
                 <h4>Envoy</h4>
               </div>
-              <p>
+              <p data-i18n="client.envoy">
                 EV car-sharing app (&ldquo;Mobility as an Amenity&rdquo;)
                 &mdash; app-based reservations, keyless vehicle access, and
                 property-scoped fleet flows.
@@ -1234,15 +1253,17 @@
         <div class="job compact">
           <div class="job-top">
             <div>
-              <span class="job-title">Front-End Tech Lead</span> ·
-              <span class="job-co">Informatech Costa Rica</span>
+              <span class="job-title" data-i18n="j2.title"
+                >Front-End Tech Lead</span
+              >
+              · <span class="job-co">Informatech Costa Rica</span>
             </div>
-            <span class="job-date">JAN 2016 — SEP 2016</span>
+            <span class="job-date" data-i18n="j2.date">JAN 2016 — SEP 2016</span>
           </div>
           <div class="job-meta">Costa Rica</div>
           <ul>
-            <li>Led front-end development as tech lead.</li>
-            <li>
+            <li data-i18n="j2.b1">Led front-end development as tech lead.</li>
+            <li data-i18n="j2.b2">
               Re-platformed <strong>Encore Capital Group</strong>'s
               consumer-facing sites.
             </li>
@@ -1252,28 +1273,32 @@
         <div class="job compact">
           <div class="job-top">
             <div>
-              <span class="job-title">Senior Software Engineer</span> ·
-              <span class="job-co">Konrad Group</span>
+              <span class="job-title" data-i18n="j3.title"
+                >Senior Software Engineer</span
+              >
+              · <span class="job-co">Konrad Group</span>
             </div>
-            <span class="job-date">MAR 2014 — JAN 2016</span>
+            <span class="job-date" data-i18n="j3.date">MAR 2014 — JAN 2016</span>
           </div>
           <div class="job-meta">San Pedro, San José, Costa Rica</div>
           <ul>
-            <li>Delivered solutions for <strong>Deloitte Digital</strong>.</li>
+            <li data-i18n="j3.b1">
+              Delivered solutions for <strong>Deloitte Digital</strong>.
+            </li>
           </ul>
         </div>
 
         <div class="job compact">
           <div class="job-top">
             <div>
-              <span class="job-title">Senior Analyst</span> ·
-              <span class="job-co">Accenture</span>
+              <span class="job-title" data-i18n="j4.title">Senior Analyst</span>
+              · <span class="job-co">Accenture</span>
             </div>
-            <span class="job-date">NOV 2012 — MAR 2014</span>
+            <span class="job-date" data-i18n="j4.date">NOV 2012 — MAR 2014</span>
           </div>
           <div class="job-meta">Costa Rica</div>
           <ul>
-            <li>
+            <li data-i18n="j4.b1">
               Delivered solutions to <strong>SAY Media</strong>,
               <strong>DuPont</strong>, <strong>Specialized</strong>, and
               <strong>Samtec Interconnect</strong>.
@@ -1284,12 +1309,14 @@
         <div class="job compact">
           <div class="job-top">
             <div>
-              <span class="job-title">Web Developer &amp; Designer</span> ·
-              <span class="job-co">avVenta Worldwide</span>
+              <span class="job-title" data-i18n="j5.title"
+                >Web Developer &amp; Designer</span
+              >
+              · <span class="job-co">avVenta Worldwide</span>
             </div>
-            <span class="job-date">FEB 2012 — MAR 2014</span>
+            <span class="job-date" data-i18n="j5.date">FEB 2012 — MAR 2014</span>
           </div>
-          <div class="job-meta">
+          <div class="job-meta" data-i18n="j5.meta">
             Front-end development &mdash; CSS3 / HTML5 / JavaScript web pages
             &amp; web apps
           </div>
@@ -1298,7 +1325,7 @@
         <div class="job compact">
           <div class="job-top">
             <div>
-              <span class="job-title">Web Developer</span> ·
+              <span class="job-title" data-i18n="j6.title">Web Developer</span> ·
               <span class="job-co">Samtec Inc</span>
               <span
                 style="
@@ -1306,10 +1333,11 @@
                   font-family: var(--mono);
                   font-size: 12px;
                 "
+                data-i18n="j6.intern"
                 >(Intern)</span
               >
             </div>
-            <span class="job-date">AUG 2011 — DEC 2011</span>
+            <span class="job-date" data-i18n="j6.date">AUG 2011 — DEC 2011</span>
           </div>
           <div class="job-meta">Costa Rica</div>
         </div>
@@ -1318,13 +1346,13 @@
       <!-- ============ SKILLS ============ -->
       <section id="skills">
         <div class="sec-head">
-          <h2>Skills</h2>
+          <h2 data-i18n="sec.skills">Skills</h2>
           <span class="rule"></span>
           <span class="idx">[02]</span>
         </div>
         <div class="skill-grid">
           <div class="skill-card">
-            <h3>Languages</h3>
+            <h3 data-i18n="skills.languages">Languages</h3>
             <div class="tags">
               <span class="tag">TypeScript</span
               ><span class="tag">JavaScript</span>
@@ -1332,7 +1360,7 @@
             </div>
           </div>
           <div class="skill-card">
-            <h3>Frontend Web</h3>
+            <h3 data-i18n="skills.frontend">Frontend Web</h3>
             <div class="tags">
               <span class="tag">React.js</span><span class="tag">Next.js</span>
               <span class="tag">Angular</span><span class="tag">HTML5</span
@@ -1340,7 +1368,7 @@
             </div>
           </div>
           <div class="skill-card">
-            <h3>Mobile</h3>
+            <h3 data-i18n="skills.mobile">Mobile</h3>
             <div class="tags">
               <span class="tag">React Native</span
               ><span class="tag">React Query</span> <span class="tag">Expo</span
@@ -1348,7 +1376,7 @@
             </div>
           </div>
           <div class="skill-card">
-            <h3>Backend / Cloud</h3>
+            <h3 data-i18n="skills.backend">Backend / Cloud</h3>
             <div class="tags">
               <span class="tag">AWS</span><span class="tag">Node.js</span>
               <span class="tag">REST / GraphQL</span
@@ -1356,19 +1384,20 @@
             </div>
           </div>
           <div class="skill-card">
-            <h3>AI-Augmented Dev</h3>
+            <h3 data-i18n="skills.ai">AI-Augmented Dev</h3>
             <div class="tags">
               <span class="tag">Claude</span><span class="tag">Codex</span>
               <span class="tag">Cursor</span
-              ><span class="tag">LLM workflows</span>
+              ><span class="tag" data-i18n="tag.llm">LLM workflows</span>
             </div>
           </div>
           <div class="skill-card">
-            <h3>Practices</h3>
+            <h3 data-i18n="skills.practices">Practices</h3>
             <div class="tags">
               <span class="tag">Offline-first</span
-              ><span class="tag">System Design</span>
-              <span class="tag">i18n</span><span class="tag">Testing</span>
+              ><span class="tag" data-i18n="tag.sysdesign">System Design</span>
+              <span class="tag">i18n</span
+              ><span class="tag" data-i18n="tag.testing">Testing</span>
             </div>
           </div>
         </div>
@@ -1377,7 +1406,7 @@
       <!-- ============ AI IN THE LOOP ============ -->
       <section id="ai">
         <div class="sec-head">
-          <h2>AI in the Loop</h2>
+          <h2 data-i18n="sec.ai">AI in the Loop</h2>
           <span class="rule"></span>
           <span class="idx">[03]</span>
         </div>
@@ -1389,7 +1418,7 @@
           </div>
           <div class="term-body">
             <div class="prompt">cat ai_workflow.log</div>
-            <div class="term-out">
+            <div class="term-out" data-i18n="ai.desc">
               Integrating AI across the development lifecycle &mdash; not as a
               novelty,<br />
               but as day-to-day leverage for shipping faster with fewer defects.
@@ -1409,8 +1438,11 @@
                   "
                   >&gt;</span
                 >
-                Pair with <strong>Claude</strong> and <strong>Codex</strong> for
-                architecture, refactors, and code review.
+                <span data-i18n="ai.b1"
+                  >Pair with <strong>Claude</strong> and
+                  <strong>Codex</strong> for architecture, refactors, and code
+                  review.</span
+                >
               </li>
               <li style="padding-left: 22px; position: relative; margin: 7px 0">
                 <span
@@ -1423,8 +1455,10 @@
                   "
                   >&gt;</span
                 >
-                Use <strong>Cursor</strong> as a primary editor for AI-assisted,
-                in-context development.
+                <span data-i18n="ai.b2"
+                  >Use <strong>Cursor</strong> as a primary editor for
+                  AI-assisted, in-context development.</span
+                >
               </li>
               <li style="padding-left: 22px; position: relative; margin: 7px 0">
                 <span
@@ -1437,8 +1471,10 @@
                   "
                   >&gt;</span
                 >
-                Build repeatable AI workflows &mdash; scaffolding, test
-                generation, and docs &mdash; into the team's process.
+                <span data-i18n="ai.b3"
+                  >Build repeatable AI workflows &mdash; scaffolding, test
+                  generation, and docs &mdash; into the team's process.</span
+                >
               </li>
             </ul>
           </div>
@@ -1448,7 +1484,7 @@
       <!-- ============ OPEN SOURCE ============ -->
       <section id="opensource">
         <div class="sec-head">
-          <h2>Open Source</h2>
+          <h2 data-i18n="sec.oss">Open Source</h2>
           <span class="rule"></span>
           <span class="idx">[04]</span>
         </div>
@@ -1460,14 +1496,18 @@
         >
           <div class="repo-top">
             <span class="repo-name">@storybook/angular</span>
-            <span class="stars featured-badge">★ initial developer</span>
+            <span class="stars featured-badge" data-i18n="oss.badge"
+              >★ initial developer</span
+            >
           </div>
-          <p>
+          <p data-i18n="oss.storybook">
             Initial developer of Storybook for Angular (v1) &mdash; brought the
             industry-standard UI component workshop to the Angular ecosystem.
             Storybook is used by teams at scale across the web platform.
           </p>
-          <div class="lang">Angular · TypeScript · Open Source</div>
+          <div class="lang" data-i18n="oss.storylang">
+            Angular · TypeScript · Open Source
+          </div>
         </a>
 
         <div class="repos">
@@ -1482,7 +1522,7 @@
               <span class="repo-name">gundb-react-hooks</span
               ><span class="stars">★ 24</span>
             </div>
-            <p>
+            <p data-i18n="oss.r1">
               A set of React hooks that wrap around GunDB core functionality.
             </p>
             <div class="lang">TypeScript</div>
@@ -1498,7 +1538,7 @@
               <span class="repo-name">gun-react-todoapp</span
               ><span class="stars">★ 19</span>
             </div>
-            <p>
+            <p data-i18n="oss.r2">
               GunDB + React TODO MVC app with private, real-time collaboration.
             </p>
             <div class="lang">JavaScript</div>
@@ -1514,7 +1554,7 @@
               <span class="repo-name">sailsjs-nodewebkit</span
               ><span class="stars">★ 13</span>
             </div>
-            <p>A node-webkit &amp; Sails.js demo app.</p>
+            <p data-i18n="oss.r3">A node-webkit &amp; Sails.js demo app.</p>
             <div class="lang">JavaScript</div>
           </a>
           <a
@@ -1528,7 +1568,7 @@
               <span class="repo-name">gundb-expo-sqlite-adapter</span
               ><span class="stars">★ 9</span>
             </div>
-            <p>
+            <p data-i18n="oss.r4">
               Adapter implementing the RAD interface, writing to SQLite
               (expo-sqlite).
             </p>
@@ -1545,7 +1585,9 @@
               <span class="repo-name">gundb-react-auth</span
               ><span class="stars">★ 5</span>
             </div>
-            <p>A set of providers for initializing GunDB Auth.</p>
+            <p data-i18n="oss.r5">
+              A set of providers for initializing GunDB Auth.
+            </p>
             <div class="lang">TypeScript</div>
           </a>
           <a
@@ -1559,7 +1601,7 @@
               <span class="repo-name">b64.space</span
               ><span class="stars">★ 3</span>
             </div>
-            <p>
+            <p data-i18n="oss.r6">
               Experimental peer-to-peer, Twitter-like microblogging platform.
             </p>
             <div class="lang">TypeScript</div>
@@ -1572,6 +1614,7 @@
             color: var(--fg-faint);
             margin-top: 16px;
           "
+          data-i18n="oss.more"
         >
           &rarr; more at
           <a href="https://github.com/alterx" target="_blank" rel="noopener"
@@ -1583,30 +1626,30 @@
       <!-- ============ TALKS & TEACHING ============ -->
       <section id="talks">
         <div class="sec-head">
-          <h2>Talks &amp; Teaching</h2>
+          <h2 data-i18n="sec.talks">Talks &amp; Teaching</h2>
           <span class="rule"></span>
           <span class="idx">[05]</span>
         </div>
         <div class="talks">
           <div class="talk">
-            <span class="kind">talk</span>
+            <span class="kind" data-i18n="k.talk">talk</span>
             <span class="t-title"
               >Composing elegant web applications with React and Ramda</span
             >
             <span class="t-meta">Frontend Day Costa Rica · 2016</span>
           </div>
           <div class="talk">
-            <span class="kind">course</span>
+            <span class="kind" data-i18n="k.course">course</span>
             <span class="t-title">Advanced JavaScript</span>
             <span class="t-meta">BrainStation · 2016</span>
           </div>
           <div class="talk">
-            <span class="kind">workshop</span>
+            <span class="kind" data-i18n="k.workshop">workshop</span>
             <span class="t-title">Angular 2: From Framework to Platform</span>
             <span class="t-meta">BrainStation · 2016</span>
           </div>
           <div class="talk">
-            <span class="kind">workshop</span>
+            <span class="kind" data-i18n="k.workshop">workshop</span>
             <span class="t-title">Angular 2: A Framework with Class</span>
             <span class="t-meta">BrainStation · 2015</span>
           </div>
@@ -1616,14 +1659,14 @@
       <!-- ============ EDUCATION ============ -->
       <section id="education">
         <div class="sec-head">
-          <h2>Education</h2>
+          <h2 data-i18n="sec.edu">Education</h2>
           <span class="rule"></span>
           <span class="idx">[06]</span>
         </div>
         <div class="stack">
           <div class="edu">
             <div>
-              <span class="deg"
+              <span class="deg" data-i18n="edu.deg"
                 >Bachelor's degree, Computer Software Engineering</span
               >
               — <span class="school">Universidad Nacional de Costa Rica</span>
@@ -1635,7 +1678,7 @@
 
       <!-- ============ FOOTER ============ -->
       <footer>
-        <span
+        <span data-i18n="footer.built"
           >$ built with html + css · no frameworks · hosted on github
           pages</span
         >
@@ -1644,70 +1687,232 @@
     </div>
 
     <script>
-      // Small touch: type-out the role line for effect
-      (function () {
-        var el = document.querySelector('.role');
-        if (!el) return;
-        var cursor = el.querySelector('.cursor');
-        var full = el.childNodes[0].nodeValue.trim();
-        el.dataset.full = full; // preserved for print / restore
-        var reduce = window.matchMedia(
-          '(prefers-reduced-motion: reduce)'
-        ).matches;
-        if (reduce) return;
-        el.childNodes[0].nodeValue = '';
-        var i = 0;
-        (function type() {
-          if (i <= full.length) {
-            el.childNodes[0].nodeValue = full.slice(0, i++);
-            setTimeout(type, 45);
-          }
-        })();
-      })();
-
-      // Theme toggle (Sublime dark / light), persisted
+      // ---- i18n (English lives in the DOM; Spanish from dictionary) + theme + PDF ----
       (function () {
         var root = document.documentElement;
-        var btn = document.getElementById('themeBtn');
-        var label = document.getElementById('themeLabel');
-        function sync() {
-          var t =
-            root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-          if (label) label.textContent = t;
+        var i18nNodes = document.querySelectorAll('[data-i18n]');
+        var EN = {};
+        i18nNodes.forEach(function (el) {
+          var k = el.getAttribute('data-i18n');
+          if (!(k in EN)) EN[k] = el.innerHTML;
+        });
+
+        var ROLE = {
+          en: 'Senior Software Engineer & Tech Lead',
+          es: 'Ingeniero de Software Senior y Tech Lead',
+        };
+
+        var ES = {
+          loading: 'Cargando perfil...',
+          summary:
+            'Más de 15 años en ingeniería de software — del análisis de requisitos y la planificación al diseño arquitectónico y la entrega. Lidero equipos en cada fase del ciclo de desarrollo para entregar productos de calidad que cumplen y superan expectativas. Ingeniero web front-end versátil — React, Next.js, Angular — que construye apps móviles multiplataforma en React Native y plataformas cloud-native en AWS, con flujos potenciados por IA en todo el ciclo.',
+          loc: '<span class="k">loc:</span> Costa Rica · Remoto',
+          'sec.exp': 'Experiencia',
+          'sec.skills': 'Habilidades',
+          'sec.ai': 'IA en el ciclo',
+          'sec.oss': 'Código abierto',
+          'sec.talks': 'Charlas y docencia',
+          'sec.edu': 'Educación',
+          'j1.title': 'Desarrollador de Software Senior',
+          'j1.date': 'SEP 2016 — PRESENTE',
+          'j1.meta':
+            'Freelance / Contrato · Remoto · React Native · React Query · AWS · TypeScript',
+          'j1.b1':
+            'Ingeniería de producto integral para una cartera de clientes — front-ends móviles, back-ends en la nube y todo lo que hay en medio.',
+          'j1.b2':
+            'Estandaricé el stack móvil en <strong>React Native</strong> con <strong>React Query</strong> para caché de estado de servidor, actualizaciones optimistas y comportamiento offline resiliente.',
+          'j1.b3':
+            'Construí y operé servicios en <strong>AWS</strong>, a cargo del despliegue, la fiabilidad y la observabilidad.',
+          'j1.b4':
+            'Integré herramientas de IA (Claude, Codex, Cursor) en el día a día para acelerar la entrega en los equipos.',
+          'clients.label': '// Trabajo destacado con clientes',
+          'badge.social': 'social',
+          'badge.adtech': 'publicidad',
+          'badge.mobility': 'movilidad',
+          'client.munity':
+            'App social y de comunidad multiplataforma en iOS y Android — captura y subida de medios, reacciones, feeds de actividad, i18n y colas de subida duraderas que sobreviven al cierre de la app.',
+          'client.quad':
+            'Plataforma publicitaria para una empresa de ad-tech con sede en Estocolmo — diseño y escalado de servicios cloud para la entrega de anuncios y la reportería.',
+          'client.envoy':
+            'App de coche compartido eléctrico (“Mobility as an Amenity”) — reservas desde la app, acceso sin llave al vehículo y flujos de flota por propiedad.',
+          'j2.title': 'Líder Técnico Front-End',
+          'j2.date': 'ENE 2016 — SEP 2016',
+          'j2.b1': 'Lideré el desarrollo front-end como líder técnico.',
+          'j2.b2':
+            'Re-plataformé los sitios de cara al consumidor de <strong>Encore Capital Group</strong>.',
+          'j3.title': 'Ingeniero de Software Senior',
+          'j3.date': 'MAR 2014 — ENE 2016',
+          'j3.b1': 'Entregué soluciones para <strong>Deloitte Digital</strong>.',
+          'j4.title': 'Analista Senior',
+          'j4.date': 'NOV 2012 — MAR 2014',
+          'j4.b1':
+            'Entregué soluciones para <strong>SAY Media</strong>, <strong>DuPont</strong>, <strong>Specialized</strong> y <strong>Samtec Interconnect</strong>.',
+          'j5.title': 'Desarrollador y Diseñador Web',
+          'j5.date': 'FEB 2012 — MAR 2014',
+          'j5.meta':
+            'Desarrollo front-end — páginas y apps web en CSS3 / HTML5 / JavaScript',
+          'j6.title': 'Desarrollador Web',
+          'j6.intern': '(Prácticas)',
+          'j6.date': 'AGO 2011 — DIC 2011',
+          'skills.languages': 'Lenguajes',
+          'skills.frontend': 'Frontend Web',
+          'skills.mobile': 'Móvil',
+          'skills.backend': 'Backend / Nube',
+          'skills.ai': 'Desarrollo con IA',
+          'skills.practices': 'Prácticas',
+          'tag.llm': 'Flujos LLM',
+          'tag.sysdesign': 'Diseño de Sistemas',
+          'tag.testing': 'Pruebas',
+          'ai.desc':
+            'Integro IA en todo el ciclo de desarrollo — no como novedad,<br /> sino como palanca diaria para entregar más rápido y con menos defectos.',
+          'ai.b1':
+            'Trabajo con <strong>Claude</strong> y <strong>Codex</strong> para arquitectura, refactorizaciones y revisión de código.',
+          'ai.b2':
+            'Uso <strong>Cursor</strong> como editor principal para desarrollo asistido por IA y en contexto.',
+          'ai.b3':
+            'Incorporo flujos de IA repetibles — scaffolding, generación de pruebas y documentación — al proceso del equipo.',
+          'oss.badge': '★ desarrollador inicial',
+          'oss.storybook':
+            'Desarrollador inicial de Storybook para Angular (v1) — llevé el taller de componentes de UI estándar de la industria al ecosistema Angular. Storybook lo usan equipos a gran escala en toda la plataforma web.',
+          'oss.storylang': 'Angular · TypeScript · Código Abierto',
+          'oss.r1':
+            'Conjunto de hooks de React que envuelven la funcionalidad principal de GunDB.',
+          'oss.r2':
+            'App TODO MVC con GunDB + React y colaboración privada en tiempo real.',
+          'oss.r3': 'App de demostración con node-webkit y Sails.js.',
+          'oss.r4':
+            'Adaptador que implementa la interfaz RAD, escribiendo en SQLite (expo-sqlite).',
+          'oss.r5': 'Conjunto de proveedores para inicializar GunDB Auth.',
+          'oss.r6':
+            'Plataforma experimental de microblogging peer-to-peer, estilo Twitter.',
+          'oss.more':
+            '→ más en <a href="https://github.com/alterx" target="_blank" rel="noopener">github.com/alterx</a>',
+          'k.talk': 'charla',
+          'k.course': 'curso',
+          'k.workshop': 'taller',
+          'edu.deg': 'Licenciatura en Ingeniería de Software',
+          'footer.built':
+            '$ hecho con html + css · sin frameworks · alojado en github pages',
+        };
+
+        var themeLabelEl = document.getElementById('themeLabel');
+        var langLabelEl = document.getElementById('langLabel');
+        var roleEl = document.querySelector('.role');
+        var state = { lang: 'en' };
+        var typeTimer = null;
+        function cancelType() {
+          if (typeTimer) {
+            clearTimeout(typeTimer);
+            typeTimer = null;
+          }
         }
-        sync();
-        if (btn)
-          btn.addEventListener('click', function () {
-            var next =
-              root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-            root.setAttribute('data-theme', next);
+
+        function isDark() {
+          return root.getAttribute('data-theme') !== 'light';
+        }
+        function updateThemeLabel() {
+          if (!themeLabelEl) return;
+          themeLabelEl.textContent =
+            state.lang === 'es'
+              ? isDark()
+                ? 'oscuro'
+                : 'claro'
+              : isDark()
+                ? 'dark'
+                : 'light';
+        }
+        function setRole(lang) {
+          if (!roleEl) return;
+          var t = lang === 'es' ? ROLE.es : ROLE.en;
+          roleEl.childNodes[0].nodeValue = t;
+          roleEl.dataset.full = t; // used by print restore + type-out
+        }
+        function applyLang(lang) {
+          state.lang = lang;
+          i18nNodes.forEach(function (el) {
+            var k = el.getAttribute('data-i18n');
+            var v = lang === 'es' && ES[k] != null ? ES[k] : EN[k];
+            if (v != null) el.innerHTML = v;
+          });
+          cancelType();
+          setRole(lang);
+          root.setAttribute('lang', lang);
+          if (langLabelEl) langLabelEl.textContent = lang === 'es' ? 'ES' : 'EN';
+          updateThemeLabel();
+        }
+
+        // Initial language: saved > browser preference > English
+        var savedLang;
+        try {
+          savedLang = localStorage.getItem('cv-lang');
+        } catch (e) {}
+        if (savedLang !== 'en' && savedLang !== 'es') {
+          savedLang =
+            (navigator.language || 'en').toLowerCase().indexOf('es') === 0
+              ? 'es'
+              : 'en';
+        }
+        applyLang(savedLang);
+
+        var langBtn = document.getElementById('langBtn');
+        if (langBtn)
+          langBtn.addEventListener('click', function () {
+            var next = state.lang === 'es' ? 'en' : 'es';
+            applyLang(next);
             try {
-              localStorage.setItem('cv-theme', next);
+              localStorage.setItem('cv-lang', next);
             } catch (e) {}
-            sync();
           });
 
-        // Download PDF: force the ink-friendly light theme for the print, then restore
-        var pdf = document.getElementById('pdfBtn');
-        var prev = null;
+        // Theme toggle (Sublime dark / light), persisted
+        var themeBtn = document.getElementById('themeBtn');
+        updateThemeLabel();
+        if (themeBtn)
+          themeBtn.addEventListener('click', function () {
+            root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+            try {
+              localStorage.setItem('cv-theme', root.getAttribute('data-theme'));
+            } catch (e) {}
+            updateThemeLabel();
+          });
+
+        // Type-out the role line (animates whichever language is active)
+        (function () {
+          if (!roleEl) return;
+          var full = roleEl.childNodes[0].nodeValue;
+          var reduce = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+          ).matches;
+          if (reduce) return;
+          roleEl.childNodes[0].nodeValue = '';
+          var i = 0;
+          (function type() {
+            if (i <= full.length) {
+              roleEl.childNodes[0].nodeValue = full.slice(0, i++);
+              typeTimer = setTimeout(type, 45);
+            }
+          })();
+        })();
+
+        // Download PDF: force the ink-friendly light theme, keep the current
+        // language, and guarantee the full role text; restore afterwards.
+        var pdfBtn = document.getElementById('pdfBtn');
+        var prevTheme = null;
         window.addEventListener('beforeprint', function () {
-          prev = root.getAttribute('data-theme');
+          prevTheme = root.getAttribute('data-theme');
           root.setAttribute('data-theme', 'light');
-          // Ensure the full role text is present even if the type-out is mid-flight
-          var role = document.querySelector('.role');
-          if (role && role.dataset.full) {
-            role.childNodes[0].nodeValue = role.dataset.full;
-          }
+          if (roleEl && roleEl.dataset.full)
+            roleEl.childNodes[0].nodeValue = roleEl.dataset.full;
         });
         window.addEventListener('afterprint', function () {
-          if (prev) {
-            root.setAttribute('data-theme', prev);
-            prev = null;
-            sync();
+          if (prevTheme) {
+            root.setAttribute('data-theme', prevTheme);
+            prevTheme = null;
+            updateThemeLabel();
           }
         });
-        if (pdf)
-          pdf.addEventListener('click', function () {
+        if (pdfBtn)
+          pdfBtn.addEventListener('click', function () {
             window.print();
           });
       })();
