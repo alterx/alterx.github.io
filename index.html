@@ -755,6 +755,8 @@
         * {
           box-shadow: none !important;
           text-shadow: none !important;
+          /* One font throughout the PDF (no monospace) — recruiter/ATS-friendly */
+          font-family: var(--sans) !important;
         }
 
         /* Hide interactive + decorative chrome */
@@ -779,8 +781,7 @@
           content: '' !important;
         }
 
-        /* PDF-only structure: drop Talks + Open Source (kept on the live site) */
-        #talks,
+        /* PDF-only structure: drop Open Source (kept on the live site) */
         #opensource {
           display: none !important;
         }
@@ -838,9 +839,12 @@
           border: none !important;
         }
 
-        /* Contacts — compact single line */
+        /* Contacts — compact single line. Client-CV policy: no email/phone. */
         .print-only {
           display: inline-block !important;
+        }
+        .no-print {
+          display: none !important;
         }
         .contacts {
           gap: 4px 10px;
@@ -1003,9 +1007,39 @@
         .client a {
           color: #000 !important;
         }
-        .client > div:last-child {
-          margin-top: 2px !important;
-          font-size: 8.3pt;
+        /* Talks & Teaching — flat, black-and-white list */
+        .talks {
+          display: block !important;
+        }
+        .talk {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: baseline;
+          gap: 4px 10px;
+          border: none !important;
+          background: none !important;
+          border-radius: 0 !important;
+          padding: 0 !important;
+          margin: 0 0 4px !important;
+          break-inside: avoid;
+        }
+        .talk .kind {
+          border: none !important;
+          background: none !important;
+          color: #555 !important;
+          font-size: 7.5pt;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          padding: 0 !important;
+        }
+        .talk .t-title {
+          color: #000 !important;
+          font-weight: 400;
+        }
+        .talk .t-meta {
+          color: #333 !important;
+          margin-left: auto;
+          font-size: 8.7pt;
         }
 
         /* Education — flat, black-and-white (no card / no colored link) */
@@ -1102,18 +1136,17 @@
 
           <h1 class="name">Carlos Vega Rodríguez</h1>
           <div class="role">
-            Senior Software Engineer &amp; Tech Lead<span class="cursor"></span>
+            Senior Software Consultant &mdash; JavaScript Frameworks, AI-Driven
+            Workflows &amp; Team/Business Enablement<span class="cursor"></span>
           </div>
 
           <p class="tagline" data-i18n="summary">
-            15+ years of software engineering &mdash; from requirement analysis
-            and project scheduling to architectural design and delivery. I lead
-            teams through every phase of the development cycle to ship quality
-            products that meet and exceed expectations. A well-versed front-end
-            web engineer &mdash; React, Next.js, Angular &mdash; building
-            cross-platform mobile apps in React Native and cloud-native
-            platforms on AWS, with AI-augmented workflows woven through the whole
-            lifecycle.
+            15+ years of software engineering, still actively shipping production
+            code across React, Next.js, React Native, and AWS. Helps engineering
+            organizations adopt AI in day-to-day work: shared conventions, review
+            discipline, and repeatable AI-driven workflows that keep code
+            consistent and quality high as teams scale. Works the full
+            development cycle, from business goals to architecture and delivery.
           </p>
 
           <ul class="contacts">
@@ -1174,25 +1207,16 @@
           </div>
           <ul>
             <li data-i18n="j1.b1">
-              Delivered end-to-end product engineering for a portfolio of
-              clients &mdash; mobile front ends, cloud back ends, and everything
-              in between.
+              Deliver full-cycle product engineering across a portfolio of
+              clients &mdash; mobile front ends, cloud back ends, and delivery.
             </li>
             <li data-i18n="j1.b2">
-              Standardized the mobile stack on
-              <strong>React Native</strong> with
-              <strong>React Query</strong> for server-state caching, optimistic
-              updates, and resilient offline behavior.
+              Standardize stacks, conventions, and CI/CD so teams ship
+              consistently and resiliently.
             </li>
             <li data-i18n="j1.b3">
-              Built and operated services on <strong>AWS</strong>, owning
-              deployment, reliability, and observability.
-            </li>
-            <li data-i18n="j1.b4">
-              Embedded AI tooling (Claude, Codex, Cursor) across the full
-              software development lifecycle &mdash; from requirements and design
-              to implementation, testing, review, and deployment &mdash;
-              accelerating delivery.
+              Drive AI-assisted development into client teams&rsquo; day-to-day
+              process.
             </li>
           </ul>
 
@@ -1209,17 +1233,13 @@
               </div>
               <p data-i18n="client.munity">
                 Cross-platform community &amp; social media app (iOS + Android)
-                &mdash; media capture/upload, reactions, activity feeds, i18n,
-                durable upload queues, and LLM-based content moderation, plus a
-                Next.js admin panel and web invite system.
+                &mdash; media capture/upload, reactions, activity feeds,
+                real-time chat, i18n, durable upload queues, and LLM-based
+                content moderation, plus a Next.js admin panel and web invite
+                system.
               </p>
               <div class="stackline">
                 React Native · React Query · Next.js · AWS · LLM
-              </div>
-              <div style="margin-top: 8px">
-                <a href="https://www.munity.us/" target="_blank" rel="noopener"
-                  >munity.us ↗</a
-                >
               </div>
             </div>
             <div class="client">
@@ -1230,16 +1250,13 @@
                 <h4>QUAD</h4>
               </div>
               <p data-i18n="client.quad">
-                Advertising platform for a Stockholm-based ad-tech company
-                &mdash; designed and scaled cloud services powering ad delivery
-                and reporting.
+                Complex, high-volume, always-available online ad delivery
+                platform for a Stockholm-based ad-tech company &mdash;
+                collaborated on system design and scaled cloud services for
+                real-time ad delivery and reporting, operated in production and
+                engineered for scalability and resiliency on AWS with Kubernetes.
               </p>
-              <div class="stackline">AWS · React · Angular</div>
-              <div style="margin-top: 8px">
-                <a href="https://quad.se/" target="_blank" rel="noopener"
-                  >quad.se ↗</a
-                >
-              </div>
+              <div class="stackline">AWS · Kubernetes · React · Angular</div>
             </div>
             <div class="client">
               <div class="client-top">
@@ -1254,14 +1271,6 @@
                 property-scoped fleet flows.
               </p>
               <div class="stackline">React Native · Mobile</div>
-              <div style="margin-top: 8px">
-                <a
-                  href="https://www.envoythere.com/"
-                  target="_blank"
-                  rel="noopener"
-                  >envoythere.com ↗</a
-                >
-              </div>
             </div>
           </div>
         </div>
@@ -1415,18 +1424,18 @@
               <span class="tag">Claude</span><span class="tag">Codex</span>
               <span class="tag">Cursor</span
               ><span class="tag" data-i18n="tag.llm">LLM workflows</span>
-              <span class="tag" data-i18n="tag.obs">LLM observability</span
-              ><span class="tag" data-i18n="tag.mod">AI moderation</span>
-              <span class="tag" data-i18n="tag.tokencost">Token &amp; cost</span>
             </div>
           </div>
           <div class="skill-card">
             <h3 data-i18n="skills.practices">Practices</h3>
             <div class="tags">
+              <span class="tag" data-i18n="tag.sysdesign">System Design</span
+              ><span class="tag" data-i18n="tag.review">Code Review &amp; Standards</span>
+              <span class="tag" data-i18n="tag.cicd">CI/CD &amp; Release</span
+              ><span class="tag" data-i18n="tag.state">State Management</span>
               <span class="tag">Offline-first</span
-              ><span class="tag" data-i18n="tag.sysdesign">System Design</span>
-              <span class="tag">i18n</span
               ><span class="tag" data-i18n="tag.testing">Testing</span>
+              <span class="tag">i18n</span>
             </div>
           </div>
         </div>
@@ -1448,10 +1457,8 @@
           <div class="term-body">
             <div class="prompt">cat ai_workflow.log</div>
             <div class="term-out" data-i18n="ai.desc">
-              Using AI across the development lifecycle and inside the product
-              &mdash; not as a novelty, but as day-to-day leverage: faster
-              delivery, content moderation at scale, and observable, cost-aware
-              LLM features.
+              AI integrated into the development process, with guardrails that
+              protect quality and consistency at team scale.
             </div>
             <ul
               class="job"
@@ -1459,44 +1466,27 @@
             >
               <li>
                 <span data-i18n="ai.b1"
-                  >Pair with <strong>Claude</strong> and
-                  <strong>Codex</strong> for architecture and refactors;
-                  automate pull-request review with
-                  <strong>CodeRabbit</strong>.</span
+                  >Implement standardized development processes and integrate AI
+                  into them across engineering organizations.</span
                 >
               </li>
               <li>
                 <span data-i18n="ai.b2"
-                  >Use <strong>Cursor</strong> as a primary editor for
-                  AI-assisted, in-context development.</span
+                  >Champion shared conventions, review discipline, and repeatable
+                  AI-driven workflows.</span
                 >
               </li>
               <li>
                 <span data-i18n="ai.b3"
-                  >Build repeatable AI workflows &mdash; scaffolding, test
-                  generation, and docs &mdash; into the team's process.</span
+                  >Enforce guardrails against &ldquo;AI slop&rdquo; &mdash;
+                  AI-generated code meets the same bar as hand-written, via
+                  review, linting, and CI.</span
                 >
               </li>
               <li>
                 <span data-i18n="ai.b4"
-                  >Power content moderation in <strong>mUnity</strong> with
-                  LLMs &mdash; automated classification and triage of
-                  user-generated content.</span
-                >
-              </li>
-              <li>
-                <span data-i18n="ai.b5"
-                  >Instrument <strong>LLM observability</strong> &mdash; tracing,
-                  evaluations, and prompt/version monitoring across AI
-                  features.</span
-                >
-              </li>
-              <li>
-                <span data-i18n="ai.b6"
-                  >Manage <strong>token utilization and cost</strong> &mdash;
-                  routing routine work to low-cost models via open-source agents
-                  (<strong>OpenCode</strong>, <strong>Cline</strong>), with
-                  budgeting and caching to keep spend predictable at scale.</span
+                  >Coach developers on AI pairing with Claude, Codex, and Cursor
+                  for architecture, refactors, and review.</span
                 >
               </li>
             </ul>
@@ -1608,23 +1598,32 @@
         </div>
         <div class="talks">
           <div class="talk">
+            <span class="kind" data-i18n="k.partner">education partner</span>
+            <span class="t-title"
+              >Mentor senior-year Computer Science design teams &mdash;
+              application development (React / React Native), front-end
+              architecture, and AI-assisted workflows</span
+            >
+            <span class="t-meta">University of Central Florida (UCF)</span>
+          </div>
+          <div class="talk no-print">
             <span class="kind" data-i18n="k.talk">talk</span>
             <span class="t-title"
               >Composing elegant web applications with React and Ramda</span
             >
             <span class="t-meta">Frontend Day Costa Rica · 2016</span>
           </div>
-          <div class="talk">
+          <div class="talk no-print">
             <span class="kind" data-i18n="k.course">course</span>
             <span class="t-title">Advanced JavaScript</span>
             <span class="t-meta">BrainStation · 2016</span>
           </div>
-          <div class="talk">
+          <div class="talk no-print">
             <span class="kind" data-i18n="k.workshop">workshop</span>
             <span class="t-title">Angular 2: From Framework to Platform</span>
             <span class="t-meta">BrainStation · 2016</span>
           </div>
-          <div class="talk">
+          <div class="talk no-print">
             <span class="kind" data-i18n="k.workshop">workshop</span>
             <span class="t-title">Angular 2: A Framework with Class</span>
             <span class="t-meta">BrainStation · 2015</span>
@@ -1674,14 +1673,14 @@
         });
 
         var ROLE = {
-          en: 'Senior Software Engineer & Tech Lead',
-          es: 'Ingeniero de Software Senior y Tech Lead',
+          en: 'Senior Software Consultant — JavaScript Frameworks, AI-Driven Workflows & Team/Business Enablement',
+          es: 'Consultor de Software Senior — Frameworks de JavaScript, Flujos con IA y Habilitación de Equipos/Negocio',
         };
 
         var ES = {
           loading: 'Cargando perfil...',
           summary:
-            'Más de 15 años en ingeniería de software — del análisis de requisitos y la planificación al diseño arquitectónico y la entrega. Lidero equipos en cada fase del ciclo para entregar productos de calidad que superan las expectativas. Ingeniero web front-end versátil — React, Next.js, Angular — que construye apps móviles multiplataforma en React Native y plataformas cloud-native en AWS, con flujos potenciados por IA en todo el ciclo.',
+            'Más de 15 años en ingeniería de software — y aún un desarrollador activo y práctico que envía código de producción con regularidad en React, Next.js, React Native y AWS. Combino esa práctica directa con ayudar a las organizaciones de ingeniería a adoptar la IA correctamente: estableciendo convenciones compartidas, disciplina de revisión y flujos con IA repetibles para que los equipos entreguen más rápido <em>sin</em> sacrificar consistencia ni calidad. Asesoro y lidero en todo el ciclo de desarrollo, traduciendo objetivos de negocio en una arquitectura y una entrega sólidas.',
           loc: '<span class="k">loc:</span> Costa Rica · Remoto',
           'sec.exp': 'Experiencia',
           'sec.skills': 'Habilidades',
@@ -1694,21 +1693,19 @@
           'j1.meta':
             'Freelance / Contrato · Remoto · React Native · React Query · AWS · TypeScript · Next.js · Angular · React',
           'j1.b1':
-            'Entregué ingeniería de producto integral para una cartera de clientes — front-ends móviles, back-ends en la nube y todo lo que hay en medio.',
+            'Entrego ingeniería de producto de ciclo completo para una cartera de clientes — front-ends móviles, back-ends en la nube y entrega.',
           'j1.b2':
-            'Estandaricé el stack móvil en <strong>React Native</strong> con <strong>React Query</strong> para caché de estado de servidor, actualizaciones optimistas y comportamiento offline resiliente.',
+            'Estandarizo stacks, convenciones y CI/CD para que los equipos entreguen de forma consistente y resiliente.',
           'j1.b3':
-            'Construí y operé servicios en <strong>AWS</strong>, a cargo del despliegue, la fiabilidad y la observabilidad.',
-          'j1.b4':
-            'Integré herramientas de IA (Claude, Codex, Cursor) en todo el ciclo de vida del desarrollo de software — desde requisitos y diseño hasta implementación, pruebas, revisión y despliegue — acelerando la entrega.',
+            'Impulso el desarrollo asistido por IA en el día a día de los equipos de los clientes.',
           'clients.label': '// Trabajo destacado con clientes',
           'badge.social': 'social',
           'badge.adtech': 'publicidad',
           'badge.mobility': 'movilidad',
           'client.munity':
-            'App social y de comunidad multiplataforma (iOS + Android) — captura y subida de medios, reacciones, feeds de actividad, i18n, colas de subida duraderas y moderación de contenido con LLM, más un panel de administración y un sistema de invitaciones web en Next.js.',
+            'App social y de comunidad multiplataforma (iOS + Android) — captura y subida de medios, reacciones, feeds de actividad, chat en tiempo real, i18n, colas de subida duraderas y moderación de contenido con LLM, más un panel de administración y un sistema de invitaciones web en Next.js.',
           'client.quad':
-            'Plataforma publicitaria para una empresa de ad-tech con sede en Estocolmo — diseño y escalado de servicios cloud para la entrega de anuncios y la reportería.',
+            'Plataforma de entrega de anuncios online compleja, de alto volumen y siempre disponible para una empresa de ad-tech con sede en Estocolmo — colaboré en el diseño del sistema y escalé servicios cloud para la entrega y la generación de informes de anuncios en tiempo real, operada en producción y diseñada para escalabilidad y resiliencia en AWS con Kubernetes.',
           'client.envoy':
             'App de coche compartido eléctrico (“Mobility as an Amenity”) — reservas desde la app, acceso sin llave al vehículo y flujos de flota por propiedad.',
           'j2.title': 'Líder Técnico Front-End',
@@ -1742,21 +1739,20 @@
           'tag.mod': 'Moderación con IA',
           'tag.tokencost': 'Tokens y costos',
           'tag.sysdesign': 'Diseño de Sistemas',
+          'tag.review': 'Revisión y estándares',
+          'tag.cicd': 'CI/CD y releases',
+          'tag.state': 'Gestión de estado',
           'tag.testing': 'Pruebas',
           'ai.desc':
-            'Uso IA en todo el ciclo de desarrollo y dentro del producto — no como novedad, sino como palanca diaria: entrega más rápida, moderación de contenido a escala y funciones de LLM observables y con control de costos.',
+            'IA integrada en el proceso de desarrollo, con controles que protegen la calidad y la consistencia a escala de equipo.',
           'ai.b1':
-            'Trabajo con <strong>Claude</strong> y <strong>Codex</strong> para arquitectura y refactorizaciones; automatizo la revisión de pull requests con <strong>CodeRabbit</strong>.',
+            'Implemento procesos de desarrollo estandarizados e integro la IA en ellos en organizaciones de ingeniería.',
           'ai.b2':
-            'Uso <strong>Cursor</strong> como editor principal para desarrollo asistido por IA y en contexto.',
+            'Impulso convenciones compartidas, disciplina de revisión y flujos con IA repetibles.',
           'ai.b3':
-            'Incorporo flujos de IA repetibles — scaffolding, generación de pruebas y documentación — al proceso del equipo.',
+            'Aplico controles contra el “AI slop” — el código generado por IA cumple el mismo estándar que el escrito a mano, mediante revisión, linting y CI.',
           'ai.b4':
-            'Impulso la moderación de contenido en <strong>mUnity</strong> con LLMs — clasificación y triaje automáticos del contenido generado por usuarios.',
-          'ai.b5':
-            'Instrumento <strong>observabilidad de LLM</strong> — trazas, evaluaciones y monitoreo de prompts y versiones en las funciones de IA.',
-          'ai.b6':
-            'Gestiono <strong>el uso y el costo de tokens</strong> — derivo el trabajo rutinario a modelos de bajo costo mediante agentes de código abierto (<strong>OpenCode</strong>, <strong>Cline</strong>), con presupuestos y caché para un gasto predecible a escala.',
+            'Guío a desarrolladores en el uso de IA con Claude, Codex y Cursor para arquitectura, refactorizaciones y revisión.',
           'oss.badge': '★ desarrollador inicial',
           'oss.storybook':
             'Desarrollador inicial de Storybook para Angular (v1) — llevé el taller de componentes de UI estándar de la industria al ecosistema Angular. Storybook lo usan equipos a gran escala en toda la plataforma web.',
@@ -1769,6 +1765,7 @@
             'Plataforma experimental de microblogging peer-to-peer, estilo Twitter.',
           'oss.more':
             '→ más en <a href="https://github.com/alterx" target="_blank" rel="noopener">github.com/alterx</a>',
+          'k.partner': 'education partner',
           'k.talk': 'charla',
           'k.course': 'curso',
           'k.workshop': 'taller',
