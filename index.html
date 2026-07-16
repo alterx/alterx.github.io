@@ -983,6 +983,14 @@
           color: #000 !important;
           font-family: var(--sans);
         }
+        /* Previous (compact) roles: one-liner only — no location or bullets */
+        .job.compact .job-meta,
+        .job.compact ul {
+          display: none !important;
+        }
+        .job.compact {
+          margin-top: 6px !important;
+        }
 
         /* Single column, no mid-item page cuts */
         .clients,
@@ -1151,11 +1159,9 @@
           color: #000 !important;
         }
 
+        /* Decorative footer is live-only — omit from the printed CV */
         footer {
-          border-top: 1px solid #ccc;
-          color: #888;
-          font-size: 8pt;
-          margin-top: 14px;
+          display: none !important;
         }
       }
 
