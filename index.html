@@ -809,9 +809,53 @@
           content: '' !important;
         }
 
-        /* PDF-only structure: drop Open Source (kept on the live site) */
-        #opensource {
+        /* PDF: keep Open Source, but only the featured @storybook/angular entry
+           (the GunDB repos + "more" link stay live-only). */
+        #opensource .repos,
+        #opensource > p {
           display: none !important;
+        }
+        .repo.featured {
+          display: block;
+          border: none !important;
+          background: none !important;
+          border-radius: 0 !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          break-inside: avoid;
+        }
+        .repo.featured .repo-top {
+          display: block;
+          margin-bottom: 1px;
+        }
+        .repo-name::before {
+          content: '' !important;
+        }
+        .repo.featured .repo-name {
+          color: #000 !important;
+          font-weight: 700;
+          font-size: 10.5pt;
+        }
+        .repo.featured .featured-badge {
+          display: inline;
+          border: 1px solid #999 !important;
+          background: none !important;
+          color: #555 !important;
+          font-size: 7.5pt;
+          font-weight: 400;
+          letter-spacing: 0.3px;
+          padding: 1px 5px !important;
+          margin-left: 6px;
+        }
+        .repo.featured p {
+          color: #000 !important;
+          margin: 1px 0 !important;
+          font-size: 10pt;
+        }
+        .repo.featured .lang {
+          color: #555 !important;
+          font-size: 8.3pt;
+          margin-top: 2px !important;
         }
 
         /* Terminals become plain blocks */
@@ -947,9 +991,11 @@
           display: block !important;
           gap: 0 !important;
         }
-        .job,
+        /* Keep small entries + individual bullets whole, but let big blocks
+           (the 18Techs job with all its client cards) flow across pages. */
+        .job.compact,
         .job li,
-        .client,
+        .client li,
         .edu {
           break-inside: avoid;
           page-break-inside: avoid;
@@ -1295,10 +1341,47 @@
               <p data-i18n="client.munity">
                 Cross-platform community &amp; social media app (iOS + Android)
                 &mdash; media capture/upload, reactions, activity feeds,
-                real-time chat, i18n, durable upload queues, and LLM-based
-                content moderation, plus a Next.js admin panel and web invite
-                system.
+                real-time chat, i18n, durable upload queues, plus a Next.js admin
+                panel and web invite system.
               </p>
+              <ul>
+                <li data-i18n="mun.b1">
+                  Technical anchor of the current munity app &mdash; built and
+                  evolved it with AI woven through architecture, implementation,
+                  and review, and guided every contributor the project has had.
+                </li>
+                <li data-i18n="mun.b2">
+                  Co-developed an AI-assisted delivery workflow linking
+                  project-management tasks to GitHub PRs, and set the team
+                  standard for traceability via conventional commits that
+                  reference each task ID.
+                </li>
+                <li data-i18n="mun.b3">
+                  Built AI-assisted onboarding tools and self-guided codebase
+                  walkthroughs for new personnel, freeing senior-engineer time
+                  otherwise spent on ramp-up.
+                </li>
+                <li data-i18n="mun.b4">
+                  Designed and shipped LLM-based content moderation for
+                  user-generated content.
+                </li>
+                <li data-i18n="mun.b5">
+                  Primary engineer since 2021 and the largest individual
+                  contributor across 4+ years of continuous delivery.
+                </li>
+                <li data-i18n="mun.b6">
+                  Established the React Native + React Query server-state
+                  standard and app-wide caching architecture.
+                </li>
+                <li data-i18n="mun.b7">
+                  Owned release and delivery &mdash; OTA update pipeline, build
+                  tooling, and CI for production rollouts.
+                </li>
+                <li data-i18n="mun.b8">
+                  Hardened authentication and reliability &mdash; refresh-token
+                  rotation, idempotency, and offline-resilient caching.
+                </li>
+              </ul>
               <div class="stackline">
                 React Native · React Query · Next.js · AWS · LLM
               </div>
@@ -1833,7 +1916,23 @@
           'zinc.b4':
             'Entregué un plan de remediación priorizado y alineado con el negocio para los ingenieros del cliente.',
           'client.munity':
-            'App social y de comunidad multiplataforma (iOS + Android) — captura y subida de medios, reacciones, feeds de actividad, chat en tiempo real, i18n, colas de subida duraderas y moderación de contenido con LLM, más un panel de administración y un sistema de invitaciones web en Next.js.',
+            'App social y de comunidad multiplataforma (iOS + Android) — captura y subida de medios, reacciones, feeds de actividad, chat en tiempo real, i18n, colas de subida duraderas, más un panel de administración y un sistema de invitaciones web en Next.js.',
+          'mun.b1':
+            'Ancla técnica de la app actual de munity — la construí y evolucioné con IA integrada en arquitectura, implementación y revisión, y guié a cada contribuidor que ha tenido el proyecto.',
+          'mun.b2':
+            'Co-desarrollé un flujo de entrega asistido por IA que enlaza tareas de gestión de proyecto con PRs de GitHub, y establecí el estándar del equipo para trazabilidad mediante commits convencionales que referencian el ID de cada tarea.',
+          'mun.b3':
+            'Construí herramientas de onboarding asistidas por IA y recorridos autoguiados del código para nuevo personal, liberando tiempo de ingenieros senior antes dedicado a la puesta al día.',
+          'mun.b4':
+            'Diseñé y lancé moderación de contenido con LLM para contenido generado por usuarios.',
+          'mun.b5':
+            'Ingeniero principal desde 2021 y el mayor contribuidor individual a lo largo de más de 4 años de entrega continua.',
+          'mun.b6':
+            'Establecí el estándar de estado de servidor con React Native + React Query y la arquitectura de caché de toda la app.',
+          'mun.b7':
+            'A cargo de release y entrega — pipeline de actualizaciones OTA, herramientas de build y CI para despliegues en producción.',
+          'mun.b8':
+            'Reforcé la autenticación y la fiabilidad — rotación de refresh tokens, idempotencia y caché resiliente offline.',
           'client.quad':
             'Plataforma de entrega de anuncios online de alto volumen y siempre disponible para una empresa de ad-tech en Estocolmo — colaboré en el diseño del sistema y escalé servicios cloud para entrega y reportería en tiempo real, operada en producción y diseñada para escalabilidad y resiliencia en AWS con Kubernetes.',
           'client.envoy':
