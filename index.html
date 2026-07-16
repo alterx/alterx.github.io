@@ -264,6 +264,10 @@
       .contacts .k {
         color: var(--fg-faint);
       }
+      /* Shown only in the printed / downloaded PDF, not on the public site */
+      .print-only {
+        display: none;
+      }
 
       /* ---------- Sections ---------- */
       section {
@@ -728,15 +732,16 @@
       }
 
       @media print {
-        /* Neutral, ink-friendly base */
+        /* ===== Black-and-white, markdown-like PDF (distinct from the live UI) ===== */
         html,
         body {
           background: #fff !important;
-          color: #111 !important;
+          color: #000 !important;
         }
         body {
-          font-size: 9pt;
-          line-height: 1.3;
+          font-family: var(--sans);
+          font-size: 10pt;
+          line-height: 1.42;
         }
         body::before,
         body::after {
@@ -752,7 +757,7 @@
           text-shadow: none !important;
         }
 
-        /* Strip terminal / decorative chrome */
+        /* Hide interactive + decorative chrome */
         .toolbar,
         .term-bar,
         .role .cursor,
@@ -766,19 +771,18 @@
           display: block !important;
           color: #333 !important;
         } /* keep AI blurb */
-        .sec-head .idx {
+        .sec-head .idx,
+        .sec-head .rule {
           display: none !important;
         }
         .sec-head h2::before {
           content: '' !important;
         }
-        .repo-name::before {
-          content: '' !important;
-        }
-        .sec-head .rule {
-          background: none !important;
-          border-bottom: 1px solid #bbb;
-          height: 0;
+
+        /* PDF-only structure: drop Talks + Open Source (kept on the live site) */
+        #talks,
+        #opensource {
+          display: none !important;
         }
 
         /* Terminals become plain blocks */
@@ -794,43 +798,53 @@
           font-size: 10pt;
         }
 
-        /* Typography — no vw clamps on paper */
+        /* Header */
         .name {
-          font-size: 19pt !important;
+          font-size: 20pt !important;
           color: #000 !important;
           margin: 0 0 1px;
         }
         .role {
-          font-size: 10pt !important;
-          color: #b45309 !important;
-          margin-bottom: 5px;
+          font-size: 10.5pt !important;
+          color: #444 !important;
+          margin-bottom: 6px;
         }
         .tagline {
-          font-size: 8.7pt !important;
-          color: #222 !important;
+          font-size: 9.5pt !important;
+          color: #000 !important;
           max-width: none;
-          margin-bottom: 5px;
+          margin-bottom: 6px;
         }
+
+        /* Section headings — markdown style: bold, title-case, full-width rule */
         .sec-head {
-          margin-bottom: 5px;
+          margin: 0 0 8px;
+          border-bottom: 1px solid #000;
+          padding-bottom: 3px;
+          break-after: avoid;
+          page-break-after: avoid;
         }
         .sec-head h2 {
           font-family: var(--sans);
-          font-size: 12pt;
-          color: #15803d !important;
-          border-bottom: 1.5px solid #15803d;
-          padding-bottom: 2px;
-          letter-spacing: 0.3px;
+          font-size: 13pt;
+          font-weight: 700;
+          color: #000 !important;
+          text-transform: none !important;
+          letter-spacing: 0;
+          border: none;
         }
         a {
-          color: #0b5cad !important;
+          color: #000 !important;
           border: none !important;
         }
 
-        /* Contacts as a compact single line */
+        /* Contacts — compact single line */
+        .print-only {
+          display: inline-block !important;
+        }
         .contacts {
           gap: 4px 10px;
-          font-size: 8.5pt;
+          font-size: 8.7pt;
         }
         .contacts li {
           border: none !important;
@@ -845,198 +859,170 @@
           content: '';
         }
 
-        /* Layout density */
+        /* Sections + jobs — flat, no timeline line or node dots */
         section {
-          margin: 9px 0 !important;
+          margin: 12px 0 !important;
         }
         .job {
-          border-left: 1px solid #ccc !important;
-          padding: 0 0 0 12px;
+          border: none !important;
+          padding: 0 !important;
         }
         .job::before {
-          width: 7px;
-          height: 7px;
-          left: -4px;
-          border-width: 1.5px;
-          border-color: #15803d !important;
-          box-shadow: none !important;
+          display: none !important;
         }
         .job + .job {
-          margin-top: 7px !important;
-        }
-        .job-title,
-        .edu .deg,
-        .client h4,
-        .repo-name,
-        .talk .t-title {
-          color: #000 !important;
+          margin-top: 9px !important;
         }
         .job-title {
           font-size: 10.5pt;
+          color: #000 !important;
+          font-weight: 700;
         }
         .job-co {
-          color: #15803d !important;
+          color: #000 !important;
         }
         .job-date,
         .edu .yr {
-          color: #b45309 !important;
+          color: #333 !important;
+        }
+        .edu .deg {
+          color: #000 !important;
         }
         .job-meta {
           font-family: var(--sans);
-          font-size: 8.5pt;
+          font-size: 8.7pt;
           color: #555 !important;
           margin: 1px 0 5px;
         }
+        .job ul {
+          margin: 4px 0 0;
+        }
         .job li {
-          color: #111 !important;
-          margin: 2px 0;
-          padding-left: 12px;
+          color: #000 !important;
+          margin: 3px 0;
+          padding-left: 14px;
         }
         .job li::before {
           content: '•' !important;
-          color: #15803d !important;
+          color: #000 !important;
           font-family: var(--sans);
         }
 
-        /* Single column everywhere: reliable ATS reading order + no mid-card page cuts */
+        /* Single column, no mid-item page cuts */
         .clients,
-        .repos,
         .skill-grid,
-        .talks,
         .stack {
           display: block !important;
           gap: 0 !important;
         }
         .job,
-        .job li {
+        .job li,
+        .client,
+        .edu {
           break-inside: avoid;
           page-break-inside: avoid;
-        }
-        .sec-head {
-          break-after: avoid;
-          page-break-after: avoid;
         }
 
-        /* Skills as compact "Label:  a  b  c" rows — never split, easy to parse */
+        /* Skills → "Label:  a  b  c" rows */
         .skill-card {
-          break-inside: avoid;
-          page-break-inside: avoid;
           display: flex;
           align-items: baseline;
           gap: 10px;
           border: none !important;
           background: none !important;
           padding: 2px 0 !important;
+          break-inside: avoid;
         }
         .skill-card h3 {
           margin: 0 !important;
-          min-width: 120px;
+          min-width: 118px;
+          flex-shrink: 0;
           white-space: nowrap;
+          color: #000 !important;
+          font-weight: 700;
         }
         .skill-card .tags {
           display: flex;
           flex-wrap: wrap;
           gap: 4px 6px;
         }
+        .tag {
+          border: 1px solid #bbb !important;
+          background: #fff !important;
+          color: #000 !important;
+          padding: 2px 7px;
+          font-size: 8.7pt;
+        }
 
-        /* Client / repo / talk / edu: full-width stacked cards, kept whole on a page */
-        .client,
-        .repo,
-        .edu,
-        .talk {
-          break-inside: avoid;
-          page-break-inside: avoid;
-          border: 1px solid #ddd !important;
-          background: #fafafa !important;
-          padding: 6px 9px !important;
-          margin: 0 0 6px !important;
-        }
+        /* Client work → flat markdown-like list, no boxes */
         .clients-label {
-          margin: 7px 0 4px !important;
+          margin: 6px 0 4px !important;
+          color: #333 !important;
+          font-weight: 700;
         }
-        .tags {
-          gap: 5px;
-        }
-        #ai .job li {
-          margin: 2px 0;
-        }
-        /* Open-source repos: compact single-line entries so the page stays <= 2pp */
-        .repos .repo {
-          display: block !important;
+        .client {
           border: none !important;
           background: none !important;
-          padding: 1px 0 !important;
-          margin: 0 !important;
+          padding: 0 !important;
+          margin: 0 0 5px !important;
         }
-        .repos .repo-top {
-          display: inline !important;
+        .client-top {
+          display: inline;
         }
-        .repos .repo .stars {
-          margin-left: 4px;
-        }
-        .repos .repo p {
-          display: inline !important;
-          margin: 0 !important;
-        }
-        .repos .repo p::before {
-          content: ' — ';
-          color: #666;
-        }
-        .repos .repo .lang {
-          display: inline !important;
-          margin: 0 0 0 5px !important;
-        }
-        .repos .repo .lang::before {
-          content: '· ';
-        }
-        .repo.featured {
-          margin-bottom: 6px !important;
-        }
-        footer {
-          margin-top: 10px !important;
-        }
-        .client p,
-        .repo p,
-        .client .stackline,
-        .repo .lang,
-        .talk .t-meta {
-          color: #444 !important;
-        }
-        .skill-card h3,
-        .client-badge,
-        .talk .kind {
-          color: #b45309 !important;
-        }
-        .client-badge,
-        .featured-badge {
+        .client-badge {
+          display: inline;
+          border: none !important;
           background: none !important;
-          color: #b45309 !important;
-          border: 1px solid #d9a066;
-          padding: 1px 5px;
+          color: #555 !important;
+          font-size: 7.5pt;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          margin-right: 5px;
+          padding: 0 !important;
         }
-        .repo.featured {
-          background: #fffaf0 !important;
-          border-color: #d9a066 !important;
-        }
-        .repo.featured .repo-name {
+        .client h4 {
+          display: inline;
+          font-size: 10pt;
           color: #000 !important;
         }
-        .tag {
-          border: 1px solid #ddd !important;
-          background: #fff !important;
-          color: #222 !important;
-          padding: 2px 7px;
-          font-size: 8.5pt;
+        .client p {
+          display: inline;
+          margin: 0;
+          color: #000 !important;
         }
-        .stars {
-          color: #b45309 !important;
+        .client p::before {
+          content: ' — ';
+          color: #000;
+        }
+        .client .stackline {
+          display: block;
+          color: #555 !important;
+          font-size: 8.3pt;
+          margin-top: 1px;
+        }
+        .client a {
+          color: #000 !important;
+        }
+        .client > div:last-child {
+          margin-top: 2px !important;
+          font-size: 8.3pt;
+        }
+
+        /* Education — flat, black-and-white (no card / no colored link) */
+        .edu {
+          border: none !important;
+          background: none !important;
+          padding: 0 !important;
+        }
+        .edu .school {
+          color: #000 !important;
         }
 
         footer {
           border-top: 1px solid #ccc;
           color: #888;
           font-size: 8pt;
-          margin-top: 16px;
+          margin-top: 14px;
         }
       }
 
@@ -1114,7 +1100,7 @@
           <div class="prompt">whoami</div>
           <div class="term-out" data-i18n="loading">Loading profile...</div>
 
-          <h1 class="name">Carlos Vega</h1>
+          <h1 class="name">Carlos Vega Rodríguez</h1>
           <div class="role">
             Senior Software Engineer &amp; Tech Lead<span class="cursor"></span>
           </div>
@@ -1134,6 +1120,7 @@
             <li data-i18n="loc">
               <span class="k">loc:</span> Costa Rica · Remote
             </li>
+            <li class="print-only"><span class="k">tel:</span> +506 8913 1416</li>
             <li>
               <span class="k">mail:</span>
               <a href="mailto:clmvega@gmail.com">clmvega@gmail.com</a>
@@ -1151,6 +1138,12 @@
               <span class="k">git:</span>
               <a href="https://github.com/alterx" target="_blank" rel="noopener"
                 >github.com/alterx</a
+              >
+            </li>
+            <li>
+              <span class="k">site:</span>
+              <a href="https://alterx.github.io/" target="_blank" rel="noopener"
+                >alterx.github.io</a
               >
             </li>
           </ul>
@@ -1196,8 +1189,10 @@
               deployment, reliability, and observability.
             </li>
             <li data-i18n="j1.b4">
-              Embedded AI tooling (Claude, Codex, Cursor) into day-to-day
-              development to accelerate delivery across teams.
+              Embedded AI tooling (Claude, Codex, Cursor) across the full
+              software development lifecycle &mdash; from requirements and design
+              to implementation, testing, review, and deployment &mdash;
+              accelerating delivery.
             </li>
           </ul>
 
@@ -1213,13 +1208,13 @@
                 <h4>munity</h4>
               </div>
               <p data-i18n="client.munity">
-                Cross-platform community &amp; social media app on iOS and
-                Android &mdash; media capture/upload, reactions, activity feeds,
-                i18n, and durable upload queues, plus a Next.js admin panel and
-                web invite system.
+                Cross-platform community &amp; social media app (iOS + Android)
+                &mdash; media capture/upload, reactions, activity feeds, i18n,
+                durable upload queues, and LLM-based content moderation, plus a
+                Next.js admin panel and web invite system.
               </p>
               <div class="stackline">
-                React Native · React Query · Next.js · AWS
+                React Native · React Query · Next.js · AWS · LLM
               </div>
               <div style="margin-top: 8px">
                 <a href="https://www.munity.us/" target="_blank" rel="noopener"
@@ -1420,6 +1415,9 @@
               <span class="tag">Claude</span><span class="tag">Codex</span>
               <span class="tag">Cursor</span
               ><span class="tag" data-i18n="tag.llm">LLM workflows</span>
+              <span class="tag" data-i18n="tag.obs">LLM observability</span
+              ><span class="tag" data-i18n="tag.mod">AI moderation</span>
+              <span class="tag" data-i18n="tag.tokencost">Token &amp; cost</span>
             </div>
           </div>
           <div class="skill-card">
@@ -1450,9 +1448,10 @@
           <div class="term-body">
             <div class="prompt">cat ai_workflow.log</div>
             <div class="term-out" data-i18n="ai.desc">
-              Integrating AI across the development lifecycle &mdash; not as a
-              novelty,<br />
-              but as day-to-day leverage for shipping faster with fewer defects.
+              Using AI across the development lifecycle and inside the product
+              &mdash; not as a novelty, but as day-to-day leverage: faster
+              delivery, content moderation at scale, and observable, cost-aware
+              LLM features.
             </div>
             <ul
               class="job"
@@ -1461,8 +1460,9 @@
               <li>
                 <span data-i18n="ai.b1"
                   >Pair with <strong>Claude</strong> and
-                  <strong>Codex</strong> for architecture, refactors, and code
-                  review.</span
+                  <strong>Codex</strong> for architecture and refactors;
+                  automate pull-request review with
+                  <strong>CodeRabbit</strong>.</span
                 >
               </li>
               <li>
@@ -1475,6 +1475,28 @@
                 <span data-i18n="ai.b3"
                   >Build repeatable AI workflows &mdash; scaffolding, test
                   generation, and docs &mdash; into the team's process.</span
+                >
+              </li>
+              <li>
+                <span data-i18n="ai.b4"
+                  >Power content moderation in <strong>mUnity</strong> with
+                  LLMs &mdash; automated classification and triage of
+                  user-generated content.</span
+                >
+              </li>
+              <li>
+                <span data-i18n="ai.b5"
+                  >Instrument <strong>LLM observability</strong> &mdash; tracing,
+                  evaluations, and prompt/version monitoring across AI
+                  features.</span
+                >
+              </li>
+              <li>
+                <span data-i18n="ai.b6"
+                  >Manage <strong>token utilization and cost</strong> &mdash;
+                  routing routine work to low-cost models via open-source agents
+                  (<strong>OpenCode</strong>, <strong>Cline</strong>), with
+                  budgeting and caching to keep spend predictable at scale.</span
                 >
               </li>
             </ul>
@@ -1678,13 +1700,13 @@
           'j1.b3':
             'Construí y operé servicios en <strong>AWS</strong>, a cargo del despliegue, la fiabilidad y la observabilidad.',
           'j1.b4':
-            'Integré herramientas de IA (Claude, Codex, Cursor) en el día a día para acelerar la entrega en los equipos.',
+            'Integré herramientas de IA (Claude, Codex, Cursor) en todo el ciclo de vida del desarrollo de software — desde requisitos y diseño hasta implementación, pruebas, revisión y despliegue — acelerando la entrega.',
           'clients.label': '// Trabajo destacado con clientes',
           'badge.social': 'social',
           'badge.adtech': 'publicidad',
           'badge.mobility': 'movilidad',
           'client.munity':
-            'App social y de comunidad multiplataforma en iOS y Android — captura y subida de medios, reacciones, feeds de actividad, i18n y colas de subida duraderas, más un panel de administración y un sistema de invitaciones web en Next.js.',
+            'App social y de comunidad multiplataforma (iOS + Android) — captura y subida de medios, reacciones, feeds de actividad, i18n, colas de subida duraderas y moderación de contenido con LLM, más un panel de administración y un sistema de invitaciones web en Next.js.',
           'client.quad':
             'Plataforma publicitaria para una empresa de ad-tech con sede en Estocolmo — diseño y escalado de servicios cloud para la entrega de anuncios y la reportería.',
           'client.envoy':
@@ -1716,16 +1738,25 @@
           'skills.ai': 'Desarrollo con IA',
           'skills.practices': 'Prácticas',
           'tag.llm': 'Flujos LLM',
+          'tag.obs': 'Observabilidad de LLM',
+          'tag.mod': 'Moderación con IA',
+          'tag.tokencost': 'Tokens y costos',
           'tag.sysdesign': 'Diseño de Sistemas',
           'tag.testing': 'Pruebas',
           'ai.desc':
-            'Integro IA en todo el ciclo de desarrollo — no como novedad,<br /> sino como palanca diaria para entregar más rápido y con menos defectos.',
+            'Uso IA en todo el ciclo de desarrollo y dentro del producto — no como novedad, sino como palanca diaria: entrega más rápida, moderación de contenido a escala y funciones de LLM observables y con control de costos.',
           'ai.b1':
-            'Trabajo con <strong>Claude</strong> y <strong>Codex</strong> para arquitectura, refactorizaciones y revisión de código.',
+            'Trabajo con <strong>Claude</strong> y <strong>Codex</strong> para arquitectura y refactorizaciones; automatizo la revisión de pull requests con <strong>CodeRabbit</strong>.',
           'ai.b2':
             'Uso <strong>Cursor</strong> como editor principal para desarrollo asistido por IA y en contexto.',
           'ai.b3':
             'Incorporo flujos de IA repetibles — scaffolding, generación de pruebas y documentación — al proceso del equipo.',
+          'ai.b4':
+            'Impulso la moderación de contenido en <strong>mUnity</strong> con LLMs — clasificación y triaje automáticos del contenido generado por usuarios.',
+          'ai.b5':
+            'Instrumento <strong>observabilidad de LLM</strong> — trazas, evaluaciones y monitoreo de prompts y versiones en las funciones de IA.',
+          'ai.b6':
+            'Gestiono <strong>el uso y el costo de tokens</strong> — derivo el trabajo rutinario a modelos de bajo costo mediante agentes de código abierto (<strong>OpenCode</strong>, <strong>Cline</strong>), con presupuestos y caché para un gasto predecible a escala.',
           'oss.badge': '★ desarrollador inicial',
           'oss.storybook':
             'Desarrollador inicial de Storybook para Angular (v1) — llevé el taller de componentes de UI estándar de la industria al ecosistema Angular. Storybook lo usan equipos a gran escala en toda la plataforma web.',
