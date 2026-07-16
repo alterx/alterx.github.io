@@ -440,11 +440,39 @@
         color: var(--heading);
         font-weight: 700;
       }
+      .client-role {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--amber);
+        margin: 0 0 6px;
+        letter-spacing: 0.3px;
+      }
       .client p {
         margin: 0;
         font-size: 13.5px;
         color: var(--fg-dim);
         line-height: 1.5;
+      }
+      .client ul {
+        margin: 8px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .client li {
+        position: relative;
+        padding-left: 16px;
+        margin: 5px 0;
+        font-size: 13px;
+        color: var(--fg-dim);
+        line-height: 1.5;
+      }
+      .client li::before {
+        content: '›';
+        position: absolute;
+        left: 0;
+        color: var(--green);
+        font-family: var(--mono);
+        font-weight: 700;
       }
       .client .stackline {
         font-family: var(--mono);
@@ -958,7 +986,7 @@
           font-size: 8.7pt;
         }
 
-        /* Client work → flat markdown-like list, no boxes */
+        /* Client work → structured, black-and-white (name · role, then detail) */
         .clients-label {
           margin: 6px 0 4px !important;
           color: #333 !important;
@@ -968,10 +996,10 @@
           border: none !important;
           background: none !important;
           padding: 0 !important;
-          margin: 0 0 5px !important;
+          margin: 0 0 7px !important;
         }
         .client-top {
-          display: inline;
+          display: block;
         }
         .client-badge {
           display: inline;
@@ -986,23 +1014,48 @@
         }
         .client h4 {
           display: inline;
-          font-size: 10pt;
+          font-size: 10.5pt;
+          font-weight: 700;
           color: #000 !important;
         }
+        .client-role {
+          display: block;
+          font-family: var(--sans);
+          font-size: 8.7pt;
+          font-style: italic;
+          color: #333 !important;
+          margin: 0 0 2px;
+          letter-spacing: 0;
+        }
         .client p {
-          display: inline;
-          margin: 0;
+          display: block;
+          margin: 1px 0;
           color: #000 !important;
         }
         .client p::before {
-          content: ' — ';
-          color: #000;
+          content: none;
+        }
+        .client ul {
+          margin: 3px 0 0;
+        }
+        .client li {
+          position: relative;
+          padding-left: 14px;
+          margin: 2px 0;
+          font-size: 9.5pt;
+          color: #000 !important;
+        }
+        .client li::before {
+          content: '•' !important;
+          color: #000 !important;
+          position: absolute;
+          left: 0;
         }
         .client .stackline {
           display: block;
           color: #555 !important;
           font-size: 8.3pt;
-          margin-top: 1px;
+          margin-top: 2px;
         }
         .client a {
           color: #000 !important;
@@ -1136,8 +1189,9 @@
 
           <h1 class="name">Carlos Vega Rodríguez</h1>
           <div class="role">
-            Senior Software Consultant &mdash; JavaScript Frameworks, AI-Driven
-            Workflows &amp; Team/Business Enablement<span class="cursor"></span>
+            Senior AI Architect &amp; Full-Lifecycle Software Engineer<span
+              class="cursor"
+            ></span>
           </div>
 
           <p class="tagline" data-i18n="summary">
@@ -1231,6 +1285,9 @@
                 >
                 <h4>munity</h4>
               </div>
+              <div class="client-role" data-i18n="role.munity">
+                Product, Software &amp; AI Implementation Architect
+              </div>
               <p data-i18n="client.munity">
                 Cross-platform community &amp; social media app (iOS + Android)
                 &mdash; media capture/upload, reactions, activity feeds,
@@ -1244,10 +1301,54 @@
             </div>
             <div class="client">
               <div class="client-top">
+                <span class="client-badge" data-i18n="badge.audit">audit</span>
+                <h4>Zinc.Tech</h4>
+              </div>
+              <div class="client-role" data-i18n="role.zinc">
+                AI-assisted Application Audit &amp; Consultant
+              </div>
+              <p data-i18n="client.zinc">
+                Independent, AI-assisted audit of a Java enterprise application
+                (property-collections software), its REST API, and AWS
+                architecture &mdash; a prioritized set of recommendations
+                delivered to the client&rsquo;s engineering team.
+              </p>
+              <ul>
+                <li data-i18n="zinc.b1">
+                  Reviewed the REST API and found roughly 40% of endpoints
+                  duplicated across roles; proposed an endpoint-by-endpoint
+                  consolidation strategy to remove dead code and realign business
+                  logic while keeping controllers live.
+                </li>
+                <li data-i18n="zinc.b2">
+                  Assessed AWS architecture and operational readiness &mdash;
+                  environment/region strategy, knowledge-transfer gaps, and the
+                  absence of security and load testing ahead of scaling.
+                </li>
+                <li data-i18n="zinc.b3">
+                  Evaluated client-side error handling and recommended error
+                  categorization, timeout and feedback loops, and clearer
+                  system-status indicators to eliminate stuck loading states and
+                  false-success outcomes.
+                </li>
+                <li data-i18n="zinc.b4">
+                  Delivered a prioritized, business-aligned remediation plan for
+                  the client&rsquo;s engineers.
+                </li>
+              </ul>
+              <div class="stackline">
+                Java · REST APIs · AWS · AI-assisted code analysis &amp; audit
+              </div>
+            </div>
+            <div class="client">
+              <div class="client-top">
                 <span class="client-badge" data-i18n="badge.adtech"
                   >ad-tech</span
                 >
                 <h4>QUAD</h4>
+              </div>
+              <div class="client-role" data-i18n="role.quad">
+                Senior Cloud &amp; DevOps Engineer
               </div>
               <p data-i18n="client.quad">
                 Complex, high-volume, always-available online ad delivery
@@ -1264,6 +1365,9 @@
                   >mobility</span
                 >
                 <h4>Envoy</h4>
+              </div>
+              <div class="client-role" data-i18n="role.envoy">
+                Senior Mobile Application Engineer
               </div>
               <p data-i18n="client.envoy">
                 EV car-sharing app (&ldquo;Mobility as an Amenity&rdquo;)
@@ -1673,8 +1777,8 @@
         });
 
         var ROLE = {
-          en: 'Senior Software Consultant — JavaScript Frameworks, AI-Driven Workflows & Team/Business Enablement',
-          es: 'Consultor de Software Senior — Frameworks de JavaScript, Flujos con IA y Habilitación de Equipos/Negocio',
+          en: 'Senior AI Architect & Full-Lifecycle Software Engineer',
+          es: 'Arquitecto de IA Senior e Ingeniero de Software de Ciclo Completo',
         };
 
         var ES = {
@@ -1702,10 +1806,26 @@
           'badge.social': 'social',
           'badge.adtech': 'publicidad',
           'badge.mobility': 'movilidad',
+          'badge.audit': 'auditoría',
+          'role.munity':
+            'Arquitecto de Producto, Software e Implementación de IA',
+          'role.zinc': 'Auditoría y Consultoría de Aplicaciones asistida por IA',
+          'role.quad': 'Ingeniero Senior de Cloud y DevOps',
+          'role.envoy': 'Ingeniero Senior de Aplicaciones Móviles',
+          'client.zinc':
+            'Auditoría independiente asistida por IA de una aplicación empresarial Java (software de gestión de propiedades), su API REST y su arquitectura en AWS — con un conjunto priorizado de recomendaciones entregado al equipo de ingeniería del cliente.',
+          'zinc.b1':
+            'Revisé la API REST: ~40% de endpoints duplicados entre roles; propuse una consolidación endpoint por endpoint para eliminar código muerto y realinear la lógica de negocio sin tocar los controladores.',
+          'zinc.b2':
+            'Evalué la arquitectura en AWS y la preparación operativa: estrategia de entornos/regiones, brechas de transferencia de conocimiento y falta de pruebas de seguridad y carga antes de escalar.',
+          'zinc.b3':
+            'Analicé el manejo de errores del cliente y recomendé categorización de errores, timeouts, ciclos de retroalimentación e indicadores de estado más claros para eliminar cargas bloqueadas y falsos éxitos.',
+          'zinc.b4':
+            'Entregué un plan de remediación priorizado y alineado con el negocio para los ingenieros del cliente.',
           'client.munity':
             'App social y de comunidad multiplataforma (iOS + Android) — captura y subida de medios, reacciones, feeds de actividad, chat en tiempo real, i18n, colas de subida duraderas y moderación de contenido con LLM, más un panel de administración y un sistema de invitaciones web en Next.js.',
           'client.quad':
-            'Plataforma de entrega de anuncios online compleja, de alto volumen y siempre disponible para una empresa de ad-tech con sede en Estocolmo — colaboré en el diseño del sistema y escalé servicios cloud para la entrega y la generación de informes de anuncios en tiempo real, operada en producción y diseñada para escalabilidad y resiliencia en AWS con Kubernetes.',
+            'Plataforma de entrega de anuncios online de alto volumen y siempre disponible para una empresa de ad-tech en Estocolmo — colaboré en el diseño del sistema y escalé servicios cloud para entrega y reportería en tiempo real, operada en producción y diseñada para escalabilidad y resiliencia en AWS con Kubernetes.',
           'client.envoy':
             'App de coche compartido eléctrico (“Mobility as an Amenity”) — reservas desde la app, acceso sin llave al vehículo y flujos de flota por propiedad.',
           'j2.title': 'Líder Técnico Front-End',
